@@ -3,7 +3,7 @@ title: "Funciones para crear y comprobar vectores de tipo entero"
 subtitle: "integer {base}: enteros     \n                          Documentación de R, 4.0.0"
 lang: es
 format: 
-  pdf:
+  html:
     documentclass: article
     pagestyle: plain
     papersize: letter
