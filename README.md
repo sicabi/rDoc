@@ -1,2 +1,2 @@
 # rDoc
-Documentación en Español de R
+Documentación de R en español
