@@ -3,7 +3,7 @@ title: "Funciones para crear o comprobar vectores de tipo entero"
 subtitle: "integer {base}: enteros     \n                          Documentación de R, 4.0.0"
 lang: es
 format: 
-  html:
+  pdf:
     documentclass: article
     pagestyle: plain
     papersize: letter
@@ -71,13 +71,15 @@ is.integer(x)
 
 ## Detalles
 
-Un vector *entero* es un tipo de dato de **R** que sirve para almacenar, representar y realizar operaciones con un subconjunto de los números enteros con signo del sistema de numeración decimal, es decir, de los enteros positivos y negativos. Este subconjunto es de rango amplio aunque limitado a 32 *bits*. Para más información sobre el rango de almacenamiento entero, puedes ver más adelante la sección *Almacenamiento entero*.
+Un vector *entero* es un tipo de dato de **R** que sirve para almacenar, representar y realizar operaciones con un subconjunto de los números enteros con signo del sistema de numeración decimal, es decir, de los enteros positivos y negativos. Este subconjunto es de rango amplio aunque limitado a 32 *bits*. Para más información sobre el rango de almacenamiento entero puedes ver más adelante la sección *Almacenamiento entero*.
 
 El tipo *entero* permite almacenar de manera exacta valores que representan números sin fracciones decimales y que, en matemáticas, se suelen representar sin marca decimal (ya sea el punto o la coma). Los vectores *enteros* subsisten como legado de los lenguajes *C* y *Fortran*, los cuales forman parte del código interno de **R**. Estos lenguajes requieren, en algunas operaciones especiales, de este tipo de almacenamiento.
 
-Así, **R** define a los vectores *enteros* como un tipo de almacenamiento exacto que podrá contener cualquier valor de un conjunto de números con signo sin marca decimal en un rango interno de 32 dígitos binarios (*bits*). Debido a esto, los límites del rango de enteros representables van de $-2^{31}+1$ a $2^{31}-1$ (aproximadamente de $\pm2\times10^9$ ).
+Así, **R** define a los vectores *enteros* como un tipo de almacenamiento exacto que podrá contener cualquier valor de un conjunto de números con signo sin marca decimal en un rango interno de 32 dígitos binarios (*bits*). Debido a esto, los límites del rango de enteros representables irán de $-2^{31}+1$ a $2^{31}-1$ (aproximadamente de $\mp2\times10^9$ ).
 
-Estos límites son resultado de dos definiciones. Por un lado, el exponente tendrá una unidad menor al número de bits porque el signo binario del entero ($0$ para valores positivos o $1$ para negativos) ocupará un dígito de los 32 disponibles. Por otro, al representar valores positivos y negativos, el intervalo de valores posibles atravesará el cero en la recta numérica, por lo que se tendrá que adicionar y sustraer una unidad en los límites del intervalo.
+Los límites del intervalo de almacenamiento son resultado de las especificaciones del almacenamiento entero. Por un lado, dado que a nivel interno toda cifra es un número binario compuesto por ceros y unos, la base de valores posibles será el número dos, mientras que su exponente será igual al número dígitos disponibles para representar una cifra, o sea, 32 *bits*.
+
+Sin embargo, dado que la especificación de **R** para los números enteros implica que se podrán representar números con signo positivo o negativo, deberá destinarse uno de estos *bits* a identificar el signo del número ($0$ para valores positivos o $1$ para negativos). Por ello, se reducirá un dígito el número de dígitos disponibles y valor del exponente de la base tendrá una unidad menor (32-1). Del mismo modo, al ser posible representar valores positivos y negativos, el intervalo de valores almacenables atravesará el cero en la recta numérica, por lo que se tendrá que adicionar y sustraer una unidad en los límites del intervalo.
 
 Las funciones básicas para crear vectores *enteros* son `integer()`, `as.integer()` y [`c()`](c%20%7Bbase%7D "c {base}")*.* Por su parte, la función `is.integer()` se utilizará para comprobar si un objeto es de [tipo](typeof%20%7Bbase%7D "typeof {base}") *entero* (`"integer")`. En particular, `as.integer()`, `is.integer()` y [`c()`](c%20%7Bbase%7D "c {base}") son funciones [primitivas](Primitive%20%7Bbase%7D "Primitive {base}"), por lo que su código fuente está implementado de manera interna y no será visible directamente por la usuaria. Para más información sobre la forma de utilización de las funciones mencionadas, puedes consultar la sección *Valor devuelto* en esta misma página de ayuda.
 
