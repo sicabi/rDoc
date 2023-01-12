@@ -1,5 +1,5 @@
 ---
-title: "Funciones para crear y comprobar vectores de tipo entero"
+title: "Funciones para crear o comprobar vectores de tipo entero"
 subtitle: "integer {base}: enteros     \n                          Documentación de R, 4.0.0"
 lang: es
 format: 
@@ -41,9 +41,9 @@ editor: visual
 
 ## Descripción
 
-La función `integer()` creará un vector de [tipo](typeof%20%7Bbase%7D "typeof {base}") *entero* (`"integer"`), que podrá almacenar un subconjunto amplio aunque limitado de números enteros positivos y negativos.
+La función `integer()` creará un vector de [tipo](typeof%20%7Bbase%7D "typeof {base}") *entero* (`"integer"`), que podrá almacenar un subconjunto amplio aunque limitado de los números enteros positivos y negativos.
 
-La función `as.integer()` coaccionará cualquier vector hacia el tipo entero. Por su parte, la función `is.integer()` verificará si un objeto es de [tipo](typeof%20%7Bbase%7D "typeof {base}") entero.
+La función `as.integer()` intentará convertir a un objeto en un vector de tipo *entero*. Por su parte, la función `is.integer()` verificará si un objeto es de [tipo](typeof%20%7Bbase%7D "typeof {base}") *entero*.
 
 ## Forma de uso o sintaxis
 
@@ -62,7 +62,7 @@ is.integer(x)
 |              |                                      |                                                                                                                                                                                                                                                                                                                                                                                        |
 | ~*longitud*~ |                                      |                                                                                                                                                                                                                                                                                                                                                                                        |
 +--------------+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| `x=`         | Un objeto                            | Un objeto para ser coaccionado o verificado como vector de tipo entero.                                                                                                                                                                                                                                                                                                                |
+| `x=`         | Un objeto                            | Un objeto para ser coaccionado o verificado como vector de tipo *entero*.                                                                                                                                                                                                                                                                                                              |
 +--------------+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 | `...`        | Otros argumentos                     | Otros argumentos que serán pasados desde o hacia otras funciones.                                                                                                                                                                                                                                                                                                                      |
 +--------------+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
@@ -71,9 +71,9 @@ is.integer(x)
 
 ## Detalles
 
-Un vector *entero* es un tipo de dato de **R** que sirve para almacenar, representar y realizar operaciones con un subconjunto de los números enteros con signo del sistema de numeración decimal, es decir, de los enteros positivos y negativos hasta de cierta magnitud. Este subconjunto es de rango amplio aunque limitado a 32 *bits*. Para más información sobre el rango de almacenamiento, puedes ver más adelante la sección *Almacenamiento entero*.
+Un vector *entero* es un tipo de dato de **R** que sirve para almacenar, representar y realizar operaciones con un subconjunto de los números enteros con signo del sistema de numeración decimal, es decir, de los enteros positivos y negativos. Este subconjunto es de rango amplio aunque limitado a 32 *bits*. Para más información sobre el rango de almacenamiento entero, puedes ver más adelante la sección *Almacenamiento entero*.
 
-El tipo entero permite almacenar de manera exacta valores que representan números sin fracciones decimales y que, por lo tanto, se representan sin marca decimal (ya sea el punto o la coma). Los vectores *enteros* subsisten como legado de los lenguajes *C* y *Fortran*, los cuales forman parte del código interno de **R**. Estos lenguajes requieren, en algunas operaciones especiales, de este tipo de almacenamiento para funcionar con números sin punto decimal.
+El tipo *entero* permite almacenar de manera exacta valores que representan números sin fracciones decimales y que, en matemáticas, se suelen representar sin marca decimal (ya sea el punto o la coma). Los vectores *enteros* subsisten como legado de los lenguajes *C* y *Fortran*, los cuales forman parte del código interno de **R**. Estos lenguajes requieren, en algunas operaciones especiales, de este tipo de almacenamiento.
 
 Así, **R** define a los vectores *enteros* como un tipo de almacenamiento exacto que podrá contener cualquier valor de un conjunto de números con signo sin marca decimal en un rango interno de 32 dígitos binarios (*bits*). Debido a esto, los límites del rango de enteros representables van de $-2^{31}+1$ a $2^{31}-1$ (aproximadamente de $\pm2\times10^9$ ).
 
@@ -139,13 +139,13 @@ La conversión aritmética de valores en base decimal a base binaria, y vicevers
 
 3.  **Enteros positivos de decimal a binario.** De forma inversa, la conversión de un número entero mayor o igual a cero en base decimal $x_{10}$ a su equivalente en base binaria $x_2$ se obtendrá al concatenar cada residuo $r_1...r_n$ obtenido de la sucesiva división del número decimal $x_{10}$ y sus cocientes $q_1...q_{n-1}$ entre la base $b$ ($2$) hasta que el último cociente $q_n$ sea igual a cero. Una vez que se haya obtenido el número binario positivo $x_2$ se deberá extender la base binaria a su izquierda. Es decir, si el tamaño de agrupación del dato es de $m$ número de *bits* y el número de dígitos de $x_2$ es $n$, entonces el número de ceros ($0$) a concatenar a la izquierda estará dado por $m-n$ siempre que $m≥0$.
 
-4.  **Enteros negativos de decimal a binario.** Finalmente, la conversión de un número entero negativo en base decimal $x_{10}$ a la base binaria $x_2$ seguirá el mismo procedimiento que el de los enteros positivos pero, adicionalmente, se negará el número obtenido a partir de la concatenación de residuos $y_2=\neg()r_n...r_1$ y luego se sumara una unidad binaria a dicho número: $x_2=y_2+1_2$. Así, una vez que se haya obtenido el número negativo $x_2$ deberemos extender la base binaria a su izquierda. Es decir, si el tamaño de agrupación del dato es de $m$ número de *bits* y el número de dígitos de $x_2$ es $n$, entonces el número de unos ($1$) a concatenar a la izquierda estará dado por $m-n$ siempre que $m≥n$.
+4.  **Enteros negativos de decimal a binario.** Finalmente, la conversión de un número entero negativo en base decimal $x_{10}$ a la base binaria $x_2$ seguirá el mismo procedimiento que el de los enteros positivos pero, adicionalmente, se negará el número obtenido a partir de la concatenación de residuos $y_2=\neg()r_n...r_1$ y luego se sumará una unidad binaria a dicho número: $x_2=y_2+1_2$. Así, una vez que se haya obtenido el número negativo $x_2$ deberemos extender la base binaria a su izquierda. Es decir, si el tamaño de agrupación del dato es de $m$ número de *bits* y el número de dígitos de $x_2$ es $n$, entonces el número de unos ($1$) a concatenar a la izquierda estará dado por $m-n$ siempre que $m≥n$.
 
 A diferencia de la representación de los números reales, cuyo almacenamiento nunca es totalmente exacto, el almacenamiento exacto de los números enteros en base binaria será posible siempre dentro cierto umbral de almacenamiento. Además, debido a que las computadoras almacenan esencialmente la información con el sistema de numeración binaria, el almacenamiento de números en el sistema decimal dejará de ser exacto después de cierto dígito (usualmente el 15), lo cual también aplica para los números enteros. Para más información, véase la página de ayuda sobre el modo de almacenamiento [doble](double%20%7Bbase%7D "double {base}") y sobre las [características numéricas de la máquina](Machine%20%7Bbase%7D ".Machine {base}").
 
 ## Nota
 
-::: {.callout-note appearance="simple"}
+::: {.callout-note appearance="minimal"}
 La expresión `is.integer(x)` no verificará si un objeto *`x`* contiene valores con números enteros, sino cuál es el [tipo de almacenamiento](typeof%20%7Bbase%7D "typeof {base}") del vector. Para verificar que los elementos de un vector sean números enteros, en el sentido matemático ($\mathbb{Z}$), utilice la función `round()` de la forma indicada en la función `es.numeroentero(x)` construida en la sección de *Ejemplos* de esta misma página de ayuda.
 :::
 

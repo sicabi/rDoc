@@ -1,0 +1,88 @@
+---
+title: "Funciones para crear o comprobar funciones de tipo doble"
+subtitle: "integer {base}: enteros     \n                          Documentación de R, 4.0.0"
+lang: es
+format: 
+  html:
+    documentclass: article
+    pagestyle: plain
+    papersize: letter
+    hyperrefoptions:
+      - colorlinks=true
+      - linkcolor=gray
+      - filecolor=blue
+      - urlcolor=blue
+    indent: false
+    toc: true
+    toc-location: left
+    toc-title: "Contenido"
+    number-sections: true
+    mainfont: "Avenir"
+    monofont: "Andale Mono"
+    linkcolor: blue
+    fontsize: 1.4em
+    cap-location: top
+    page-layout: article
+    code-copy: true
+    code-tools: false
+    tbl-colwidths: [20,15,65]
+    tbl-cap-location: top
+    geometry:
+      - top=30mm
+      - bottom=30mm
+      - left=35mm
+      - right=35mm
+      - heightrounded
+    theme:
+      light: pandoc
+      dark: darkly
+editor: visual
+---
+
+## Descripción
+
+La función `double()` creará un vector de tipo *doble* (`"doble"`), que podrá almacenar un subconjunto muy amplio de los números reales con un grado de precisión limitado. Los vectores *dobles* son los únicos en **R** que permiten realizar operaciones aritméticas con números reales, también llamados en matemáticas valores continuos o con precisión decimal. La función `as.double()` intentará convertir a un objeto en un vector de tipo *doble*. Por su parte, la función `is.double()` verificará si un objeto es de tipo *doble*.
+
+La función `single()` creará también un vector de tipo *doble* para almacenamiento de números reales, pero añadirá un atributo que permitirá identificar al vector como uno de tipo *simple* a nivel interno del código de `R`. Para más información, puedes ver más adelante la sección *Detalles*. La función `as.single()` intentará coaccionar cualquier objeto hacia un vector de tipo *doble* y añadirá el atributo mencionado.
+
+## Forma de uso o sintaxis
+
+## Argumentos
+
++--------------+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Argumento    | Valor esperado                       | Propósito                                                                                                                                                                                                                                                                                                                                                                              |
++==============+======================================+========================================================================================================================================================================================================================================================================================================================================================================================+
+| `length=`    | Un valor entero mayor o igual a cero | Determina la longitud deseada del vector, es decir, el número de elementos que almacenará. El argumento de longitud aceptará números enteros no negativos. Los valores continuos o con decimales ([tipo](typeof%20%7Bbase%7D "typeof {base}") [doble](double%20%7Bbase%7D "double {base}")) serán convertidos a enteros y la aportación de más un valor devolverá un mensaje de error. |
+|              |                                      |                                                                                                                                                                                                                                                                                                                                                                                        |
+| ~*longitud*~ |                                      |                                                                                                                                                                                                                                                                                                                                                                                        |
++--------------+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `x=`         | Un objeto                            | Un objeto para ser coaccionado o verificado como vector de tipo *doble*.                                                                                                                                                                                                                                                                                                               |
++--------------+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `...`        | Otros argumentos                     | Otros argumentos que serán pasados desde o hacia otras funciones.                                                                                                                                                                                                                                                                                                                      |
++--------------+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+: \<Tabla de argumentos de las funciones descritas, no es necesario numerarla\>
+
+## Detalles
+
+Un vector *doble* es un tipo de dato de **R** que sirve para almacenar, representar y realizar operaciones con un subconjunto de los números reales con signo del sistema de numeración decimal, es decir, de los reales positivos y negativos hasta una magnitud y precisión muy altas. Este subconjunto es de rango amplio aunque limitado a 64 *bits*. Para más información sobre el rango de almacenamiento *doble*, puedes ver más adelante la sección *Almacenamiento de números reales*.
+
+El tipo *doble* es el único en R destinado para almacenar elementos con valores que representen números reales del sistema de numeración decimal hasta cierto nivel de exactitud y precisión. La *exactitud* de un formato de almacenamiento se refiere a la correspondencia entre la cifra almacenada internamente y la cifra representada en pantalla. Por su parte, la *precisión* alude al número de dígitos significativos que pueden ser representados en pantalla, así como al número de dígitos a los cuales puede redondearse un número, pero cuyo almacenamiento no siempre será exacto debido a las particularidades de la representación de números fraccionarios entre el sistema de numeración binario y el decimal.
+
+Así, **R** define a los vectores *dobles* como un tipo de almacenamiento no exacto que podrá contener cualquier valor de un conjunto de números con signo con marca decimal en un rango interno de 64 dígitos binarios (*bits*). Debido a esto, los límites del rango de números reales representables van de, aproximadamente, $-1.79 \times 10^{308}$ a $1.79 \times 10^{308}$ .
+
+## Valor devuelto
+
+## \<Sección adicional\>
+
+## Nota
+
+## Referencias
+
+## También véase
+
+## Ejemplos
+
+## Código fuente
+
+\[Paquete `{}` version 4.2.2 [Índice](%7Bbase%7D "{base}")\]
