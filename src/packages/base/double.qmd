@@ -41,9 +41,13 @@ editor: visual
 
 ## Descripción
 
-La función `double()` creará un vector de tipo *doble* (`"doble"`), que podrá almacenar un subconjunto muy amplio de los números reales con un grado de precisión limitado. Los vectores *dobles* son los únicos en **R** que permiten realizar operaciones aritméticas con números reales, también llamados en matemáticas valores continuos o con precisión decimal. La función `as.double()` intentará convertir a un objeto en un vector de tipo *doble*. Por su parte, la función `is.double()` verificará si un objeto es de tipo *doble*.
+La función `double()` creará un vector de tipo *doble* (`"double"`), que podrá almacenar un subconjunto muy amplio de los números reales con un grado de precisión limitado.
 
-La función `single()` creará también un vector de tipo *doble* para almacenamiento de números reales, pero añadirá un atributo que permitirá identificar al vector como uno de tipo *simple* a nivel interno del código de `R`. Para más información, puedes ver más adelante la sección *Detalles*. La función `as.single()` intentará coaccionar cualquier objeto hacia un vector de tipo *doble* y añadirá el atributo mencionado.
+La función `as.double()` intentará convertir en un vector de tipo *doble* a cualquier tipo de objeto. Por su parte, la función `is.double()` verificará si un objeto es de tipo *doble*.
+
+La función `single()` creará también un vector de tipo *doble* para almacenamiento de números reales, pero añadirá un atributo que permitirá identificar al vector como uno de tipo *simple* a nivel interno del código de `R`. Para más información, puedes ver más adelante la sección *Detalles*.
+
+La función `as.single()` intentará coaccionar cualquier objeto hacia un vector de tipo *doble* y añadirá el atributo mencionado.
 
 ## Forma de uso o sintaxis
 
@@ -61,15 +65,23 @@ La función `single()` creará también un vector de tipo *doble* para almacenam
 | `...`        | Otros argumentos                     | Otros argumentos que serán pasados desde o hacia otras funciones.                                                                                                                                                                                                                                                                                                                      |
 +--------------+--------------------------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
-: \<Tabla de argumentos de las funciones descritas, no es necesario numerarla\>
+: Argumentos para las funciones de creación y verificación de vectores *dobles*
 
 ## Detalles
 
-Un vector *doble* es un tipo de dato de **R** que sirve para almacenar, representar y realizar operaciones con un subconjunto de los números reales con signo del sistema de numeración decimal, es decir, de los reales positivos y negativos hasta una magnitud y precisión muy altas. Este subconjunto es de rango amplio aunque limitado a 64 *bits*. Para más información sobre el rango de almacenamiento *doble*, puedes ver más adelante la sección *Almacenamiento de números reales*.
+Un vector *doble* es un tipo de dato de **R** que sirve para almacenar, representar y realizar operaciones con un subconjunto de los números reales del sistema de numeración decimal hasta una magnitud y precisión muy altas. Este subconjunto es de rango amplio aunque limitado a 64 *bits*. Para más información sobre el rango de almacenamiento *doble*, puedes ver más adelante la sección *El tipo de almacenamiento doble*.
 
-El tipo *doble* es el único en R destinado para almacenar elementos con valores que representen números reales del sistema de numeración decimal hasta cierto nivel de exactitud y precisión. La *exactitud* de un formato de almacenamiento se refiere a la correspondencia entre la cifra almacenada internamente y la cifra representada en pantalla. Por su parte, la *precisión* alude al número de dígitos significativos que pueden ser representados en pantalla, así como al número de dígitos a los cuales puede redondearse un número, pero cuyo almacenamiento no siempre será exacto debido a las particularidades de la representación de números fraccionarios entre el sistema de numeración binario y el decimal.
+El tipo *doble* es el único en R que permite almacenar elementos con valores que representen números reales del sistema de numeración decimal hasta cierto nivel de exactitud y precisión. La *exactitud* de un formato de almacenamiento se refiere a la correspondencia entre la cifra almacenada internamente y la representada en pantalla. Por su parte, la *precisión* alude al número de dígitos significativos que pueden ser representados en pantalla, así como al número de dígitos a los cuales puede redondearse una cifra, pero cuyo almacenamiento no siempre será exacto debido a las particularidades de la conversión de los números fraccionarios entre el sistema de numeración binario y el decimal.
 
-Así, **R** define a los vectores *dobles* como un tipo de almacenamiento no exacto que podrá contener cualquier valor de un conjunto de números con signo con marca decimal en un rango interno de 64 dígitos binarios (*bits*). Debido a esto, los límites del rango de números reales representables van de, aproximadamente, $-1.79 \times 10^{308}$ a $1.79 \times 10^{308}$ .
+Así, **R** define a los vectores *dobles* como un tipo de almacenamiento no exacto de punto flotante que podrá contener cualquier valor de un conjunto de números con signo con marca decimal en un rango interno de 64 dígitos binarios (*bits*).
+
+Este rango equivale a la posibilidad de almacenar $2^{64}$ valores reales distintos. No obstante, a diferencia del tipo entero, el tipo doble no utiliza literalmente las posiciones de los dígitos binarios para almacenar
+
+Este número de *bits* de almacenamiento se distribuye un bit se destina a representar el signo, once *bits* corresponden al exponente con signo de la base binaria, y los 53 bits restantes almacenarán al coeficiente con su parte entera y fraccionaria.
+
+Debido a esto, los límites del rango de números reales representables van de, aproximadamente, $-1.79 \times 10^{308}$ a $1.79 \times 10^{308}$ .
+
+Así, **R** define a los vectores *enteros* como un tipo de almacenamiento exacto que podrá contener cualquier valor de un conjunto de números con signo sin marca decimal en un rango interno de 32 dígitos binarios (*bits*). Este rango equivale a la posibilidad de almacenar $2^{32}$ ($4\,294\,967\,296$) valores enteros distintos. Debido a que los valores posibles por dígito son dos ($0$ y $1$), la base del exponente es el número dos ($2$). Por su parte, el valor del exponente es equivalente al número de dígitos disponibles para almacenamiento, en este caso, treinta y dos ($32$). La elevación de la base a este exponente permite obtener todas las combinaciones de valores enteros posibles para un rango de 32 *bits*.
 
 ## Valor devuelto
 
