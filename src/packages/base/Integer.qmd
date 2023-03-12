@@ -71,9 +71,9 @@ is.integer(x)
 
 ## Detalles
 
-Un vector *entero* es un objeto de **R** destinado para almacenar exclusivamente datos de tipo *entero* en celdas contiguas, y para realizar operaciones individuales con sus elementos. Los vectores *enteros* subsisten como un legado de los lenguajes *C* y *Fortran*, los cuales forman parte del código interno de **R**. Estos lenguajes requieren todavía de este tipo de almacenamiento para algunas operaciones especiales.
+Un vector *entero* es una estructura fundamental de **R** destinada al almacenamiento exclusivo de datos de tipo *entero* en celdas contiguas, así como a la realización de operaciones individuales o en paralelo con los elementos de esta celdas. Los vectores *enteros* subsisten como un legado de los lenguajes *C* y *Fortran*, los cuales forman parte del código interno de **R**. Estos lenguajes requieren todavía de este tipo de almacenamiento para algunas operaciones especiales.
 
-A su vez, el tipo de dato *entero* es una categorización de valores que permite representar y realizar operaciones con un subconjunto de los números enteros con signo del sistema de numeración decimal, es decir, de los enteros positivos y negativos. Este subconjunto es de rango amplio aunque limitado a 32 *bits*. El tipo *entero* permite almacenar de manera exacta los números sin fracciones o marca decimal, la cual puede tratarse del punto ( . ) o la coma ( , ) dependiendo del país.
+El tipo de dato *entero* es una categorización de valores que permite representar y realizar operaciones con un subconjunto de los números enteros con signo del sistema de numeración decimal, es decir, de los enteros positivos y negativos. Este subconjunto es de rango amplio aunque limitado a 32 *bits*. El tipo *entero* permite almacenar de manera exacta los números sin fracciones o marca decimal, la cual puede tratarse del punto ( . ) o la coma ( , ) dependiendo del país.
 
 Específicamente, **R** define al tipo *entero* como un [tipo de almacenamiento interno](typeof%20%7Bbase%7D "typeof {base}") de carácter exacto que podrá contener cualquier valor de un conjunto de números con signo sin marca decimal en un rango de 32 dígitos binarios (*bits*). Este rango equivale a la posibilidad de almacenar $2^{32}$ valores enteros distintos.
 
@@ -83,15 +83,15 @@ No obstante, ya que **R** define al tipo *entero* como uno capaz de almacenar va
 
 De este modo, las funciones básicas para crear vectores *enteros* son `integer()`, `as.integer()` y [`c()`](c%20%7Bbase%7D "c {base}")*.* Por su parte, la función `is.integer()` se utilizará para comprobar si un objeto es de [tipo](typeof%20%7Bbase%7D "typeof {base}") *entero* (`"integer")`. En particular, `as.integer()`, `is.integer()` y [`c()`](c%20%7Bbase%7D "c {base}") son funciones [primitivas](Primitive%20%7Bbase%7D "Primitive {base}"), por lo que su código fuente está implementado de manera interna y no será visible directamente por la usuaria. Para más información sobre la forma de utilización de las funciones mencionadas, puedes consultar la sección *Valor devuelto* en esta misma página de ayuda.
 
-Como objetos, los vectores *enteros* son un [tipo de vector](vector%20%7Bbase%7D "vector {base}") atómico o fundamental de **R**, por lo que no podrán convertirse en objetos más simples ni contener elementos que no sean del mismo tipo. Los [vectores atómicos](vector%20%7Bbase%7D "vector {base}") están definidos a nivel interno por su [tipo de almacenamiento](typeof%20%7Bbase%7D). El tipo de almacenamiento determina el tipo de vector y las operaciones que les son aplicables.
+Como objetos, los vectores *enteros* son un [tipo de vector](vector%20%7Bbase%7D "vector {base}") atómico o fundamental de **R**, por lo que no podrán convertirse en objetos más simples ni contener elementos que no sean del mismo tipo. Los [vectores atómicos](vector%20%7Bbase%7D "vector {base}") están definidos a nivel interno por su [tipo de almacenamiento](typeof%20%7Bbase%7D). El tipo de almacenamiento determina el tipo de vector y las operaciones que le son aplicables.
 
 El [tipo interno de almacenamiento](typeof%20%7Bbase%7D "typeof {base}") de un vector *entero* tendrá asignada como atributo la etiqueta inglesa *entero* (`"integer")` y su [modo de almacenamiento](mode%20%7Bbase%7D) tendrá asociada como atributo la etiqueta inglesa *numérico* (`"numeric")`. Además, los vectores *enteros* son una [clase de objeto](class%20%7Bbase%7D "class {base}") del lenguaje, por lo que también podrán extender sus propiedades a nuevos objetos.
 
 Los vectores de tipo *entero* (`"integer"`) podrán almacenar valores enteros en forma más compacta que otros [tipos de almacenamiento numérico](numeric%20%7Bbase%7D "numeric {base}"), como el almacenamiento [*doble*](double%20%7Bbase%7D "double {base}") (`"double"`), que puede guardar igualmente enteros de manera exacta en un rango mucho más amplio. Sin embargo, las capacidades actuales de los ordenadores vuelven imperceptibles, en la práctica, estas ganancias en eficiencia derivadas del uso del tipo de datos *entero*.
 
-Para cada tipo de [vector](vector%20%7Bbase%7D "vector {base}") atómico, salvo para los vectores [crudos](raw%20%7Bbase%7D "raw {base}") (`"raw"`), existe un tipo propio de [valor no disponible](NA%20%7Bbase%7D "NA {base}") `NA`. Así, al tipo entero entero le corresponderá el valor no disponible `NA_integer_`. Sin embargo, los valores no disponibles de los vectores *enteros* serán mostrados en pantalla solamente con los caracteres `NA`.
+Para cada tipo de [vector](vector%20%7Bbase%7D "vector {base}") atómico, salvo para los vectores [crudos](raw%20%7Bbase%7D "raw {base}") (`"raw"`), existe un tipo propio de [valor no disponible](NA%20%7Bbase%7D "NA {base}") `NA`. Así, al tipo *entero* le corresponderá el valor no disponible `NA_integer_`. Sin embargo, los valores no disponibles de los vectores *enteros* serán mostrados en pantalla solamente con los caracteres `NA`.
 
-Si deseas asegurarte de que los vectores *enteros* reciban sólo valores no disponibles de tipo *entero*, puedes utilizar el valor `NA_integer_` (en vez de la forma más simple `NA`) en las operaciones de [asignación](assign%20%7Bbase%7D "assign {base}"). Para más información puedes ver más adelante la sección *Ejemplos*, así como la página de ayuda de los [valores no disponibles](NA%20%7Bbase%7D "NA {base}").
+Si deseas asegurarte de que los vectores *enteros* reciban sólo valores no disponibles de tipo *entero*, puedes utilizar el valor `NA_integer_` (en vez de la forma más simple `NA`) en las operaciones de [asignación](assign%20%7Bbase%7D "assign {base}"). Para más información puedes consultar más adelante la sección *Ejemplos*, así como la página de ayuda de los [valores no disponibles](NA%20%7Bbase%7D "NA {base}").
 
 ## Valor devuelto
 
@@ -159,11 +159,11 @@ La expresión `is.integer(x)` no verificará si un objeto *`x`* contiene valores
 
 ### Sobre las denominaciones de los tipos, modos y clases numéricas
 
-La etiqueta `"integer"` es el nombre del [tipo interno de almacenamiento](typeof {base} "typeof {base}") de datos que existe en **R** para trabajar con números enteros. Por otro lado, la etiqueta `"double"` es el nombre de del tipo interno de almacenamiento para trabajar con valores continuos o reales. En cambio, la etiqueta `"numeric"` es el nombre de un [modo de almacenamiento](mode {base} "mode {base}") de datos, que agrupa tanto al tipo `"integer"` como al tipo `"double"` bajo una sola categoría. En este sentido, cuando hablamos del *tipo* del vector, nos referimos solamente al tipo interno de almacenamiento, nunca a su modo de almacenamiento.
+`"integer"` es la etiqueta que identifica el [tipo interno de almacenamiento](typeof%20%7Bbase%7D "typeof {base}") que permite a los vectores *enteros* trabajar con números de este tipo. Por otro lado, la etiqueta `"double"` identifica al tipo interno de almacenamiento *doble* que permite a los vectores trabajar con valores continuos o reales. En cambio, la etiqueta `"numeric"` es el nombre de un [modo de almacenamiento](mode%20%7Bbase%7D "mode {base}") de datos, que agrupa tanto al tipo `"integer"` como al tipo `"double"` bajo una sola categoría. En este sentido, cuando hablamos del *tipo* del vector, nos referimos solamente al tipo interno de almacenamiento, nunca a su modo de almacenamiento.
 
-Los vectores, además de poseer tipos y modos de almacenamiento, son también objetos del lenguaje. Los objetos consisten en entidades abstractas que representan a entidades concretas del mundo real. Como abstracciones, poseen sólo algunos atributos dependiendo de la entidad a la que representen. La *clase* de un objeto en R consistirá, entonces, en el subconjunto de atributos que determina al tipo de objeto representado.
+Los vectores, además de poseer tipos y modos de almacenamiento, son también objetos del lenguaje. Los objetos consisten en entidades abstractas que representan a entidades concretas del mundo real. Como abstracciones, poseen sólo algunos atributos del objeto representado. Así, la *clase* de un objeto en R consistirá en el subconjunto de atributos que determina al tipo de objeto representado.
 
-Uno de los atributos más importantes de cualquier objeto son los métodos y funciones específicas que pueden aplicársele. A partir de *S4* (el antecedente de **R**) se definió formalmente a la clase `"integer"` como con métodos específicos para objetos con el tipo de almacenamiento `"integer"`. Esto supone que los vectores de tipo `"integer"`, si bien cuentan con un modo de almacenamiento definido como `"numeric"`, pertenecen a una clase con un conjunto de métodos propio.
+Uno de los atributos más importantes de cualquier objeto son los métodos y funciones específicas que pueden aplicársele. A partir de *S4* (el antecedente de **R**) se definió formalmente a la clase `"integer"` como una con métodos específicos para objetos con el tipo de almacenamiento `"integer"`. Esto supone que los vectores de tipo `"integer"`, si bien cuentan con un modo de almacenamiento definido como `"numeric"`, pertenecen a una clase con un conjunto de métodos propio. Para obtener más información, puedes consultar la sección *Ejemplos* en esta misma página de ayuda.
 
 Ya que **R** utiliza indistintamente al modo de almacenamiento `"numeric"` para agrupar en una categoría a los vectores almacenados con los tipos de internos de almacenamiento `"integer"` y `"double"`, pero aplica los métodos de la clase `"integer"` para el tipo `"integer"` y los métodos de la clase `"numeric"` para el tipo `"double"`, las usuarias podrían encontrarse en la situación de no estar seguras de qué funciones son válidas para un objeto numérico. Para evitar confusiones sobre el tipo de objeto de que se trata, puedes consultar siempre el tipo interno de almacenamiento con la función `storage.mode()` o, directamente, la clase del objeto con la función [`class()`](class%20%7Bbase%7D "class {base}").
 
@@ -254,7 +254,11 @@ binAdec <- function(d) {
 binAdec(x) # +3
 binAdec(y) # -3
 
+## Para verificar las funciones de la clase "integer" y "numeric"
+methods(class = "integer") # as.data.frame      coerce      Ops  
 
+methods(class = "numeric") # all.equal   as.data.frame  as.Date  as.POSIXct    
+                           # as.POSIXlt  as.raster      coerce   Ops          
 ```
 
 ## Código fuente
