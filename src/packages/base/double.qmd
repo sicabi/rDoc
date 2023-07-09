@@ -1,54 +1,68 @@
 ---
-title: "Funciones para crear o comprobar vectores de tipo doble"
-subtitle: "integer {base}: enteros     \n                          Documentación de R, 4.0.0"
 lang: es
-format: 
+format:
   pdf:
-    documentclass: article
+    documentclass: article 
     pagestyle: plain
-    papersize: letter
-    hyperrefoptions:
-      - colorlinks=true
-      - linkcolor=gray
-      - filecolor=blue
-      - urlcolor=blue
-    indent: false
-    toc: true
-    toc-location: left
-    toc-title: "Contenido"
-    number-sections: true
-    mainfont: "Avenir"
-    monofont: "Andale Mono"
-    linkcolor: blue
-    fontsize: 1.4em
-    cap-location: top
     page-layout: article
-    code-copy: true
-    code-tools: false
-    tbl-colwidths: [20,15,65]
-    tbl-cap-location: top
     geometry:
       - top=30mm
       - bottom=30mm
       - left=35mm
       - right=35mm
       - heightrounded
+    tbl-colwidths: [20,15,65]
+    tbl-cap-location: top
+    mainfont: "Avenir"
+    monofont: "Andale Mono"
+    mathfont: "Avenir"
+    fontsize: 1.15em
+    number-sections: true
+    include-in-header: header.tex
+    include-before-body: alignment.tex
+    include-after-body: alignment_end.tex
+  html:
     theme:
       light: pandoc
       dark: darkly
+    toc: true
+    toc-location: left
+    number-sections: true
+    mainfont: "Avenir"
+    monofont: "Andale Mono"
+    html-math-method: mathml
+    code-copy: true
+    code-tools: false
 editor: visual
+bibliography: references.bib
 ---
 
-## Descripción
+```{=tex}
+    \title{\LARGE{Funciones para crear o verificar vectores de tipo \textit{doble}}
+    \\
+    \medskip\large{\normalfont{Documentación de R \ver}}
+    \\
+    }
+    \maketitle
+```
+## Descripción {#desc .title}
 
-La función `double()` creará un vector de tipo *doble* (`"double"`) que podrá almacenar un subconjunto muy amplio de los números reales hasta cierto nivel de precisión.
+La función `double()` creará un vector de tipo *doble* (`"double"`) que podrá almacenar y representar un subconjunto muy amplio de los números reales con una exactitud máxima de hasta 15 dígitos.
 
 La función `as.double()` intentará convertir en un vector de tipo *doble* a cualquier tipo de objeto. Por su parte, la función `is.double()` verificará si un objeto es de tipo *doble*.
 
-La función `single()` creará también un vector de tipo *doble* para almacenamiento de números reales, pero añadirá un atributo que permitirá identificar al vector como uno de tipo *simple* a nivel interno del código de **R**. Para más información, puedes ver más adelante la sección *Valor devuelto*.
+La función `single()` creará un vector de tipo *doble* para almacenamiento y representación de números reales, pero añadirá un atributo (`"Csingle"`) que permitirá identificar al vector como uno de tipo *simple* a nivel interno del código de **R**. Para más información, puedes ver más adelante la sección *Valor devuelto*.
 
-La función `as.single()` intentará coaccionar cualquier objeto hacia un vector de tipo *doble* y añadirá el atributo mencionado.
+La función `as.single()` intentará coaccionar cualquier objeto hacia un vector de tipo *doble* y también añadirá un atributo (`"Csingle"`) que permitirá identificar al vector como uno de tipo simple a nivel interno del código de **R**.
 
+La función [`numeric()`](numeric) es idéntica a la función `double()` y la función [`as.numeric()`](numeric) es idéntica a `as.double()`. Estas funciones existen como una denominación más general para identificar a los números reales en **R**. Para mayor información, puedes consultar más adelante la sección *Detalles*.
+
+```{=tex}
+{\hypersetup{linkcolor=black}
+\renewcommand{\contentsname}{Contenido}
+\setcounter{tocdepth}{1}
+\tableofcontents{}}
+```
 ## Forma de uso o sintaxis
 
 ``` {.r eval="FALSE"}
@@ -58,102 +72,288 @@ is.double(x)
 
 single(length = 0)
 as.single(x, ...)
+
+numeric(length = 0)
+as.numeric(x, ...)
+is.numeric(x)
 ```
 
-## Argumentos
+## Argumentos {#argumentos .title}
 
-+--------------+--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| Argumento    | Valor esperado                       | Propósito                                                                                                                                                                                                                                                                                                                                                                                 |
-+==============+======================================+===========================================================================================================================================================================================================================================================================================================================================================================================+
-| `length=`    | Un valor entero mayor o igual a cero | Determina la longitud deseada del vector, es decir, el número de elementos que almacenará. El argumento de longitud aceptará números enteros no negativos. Los valores continuos o con decimales ([tipo](typeof%20%7Bbase%7D "typeof {base}") [doble](double%20%7Bbase%7D "double {base}")) serán convertidos a enteros y la aportación de más de un valor devolverá un mensaje de error. |
-|              |                                      |                                                                                                                                                                                                                                                                                                                                                                                           |
-| ~*longitud*~ |                                      |                                                                                                                                                                                                                                                                                                                                                                                           |
-+--------------+--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| `x=`         | Un objeto                            | Un objeto para ser coaccionado o verificado como vector de tipo *doble*.                                                                                                                                                                                                                                                                                                                  |
-+--------------+--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| `...`        | Otros argumentos                     | Otros argumentos que serán pasados desde o hacia otras funciones.                                                                                                                                                                                                                                                                                                                         |
-+--------------+--------------------------------------+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+\small
+
++--------------+--------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| Argumento    | Valor esperado                       | Propósito                                                                                                                                                                                                                                                                                                     |
++==============+======================================+===============================================================================================================================================================================================================================================================================================================+
+| `length=`    | Un valor entero mayor o igual a cero | Determina la longitud deseada del vector, es decir, el número de elementos que almacenará. El argumento de longitud aceptará números enteros no negativos. Los valores continuos o con decimales (tipo *doble*) serán convertidos a enteros y la aportación de más de un valor devolverá un mensaje de error. |
+|              |                                      |                                                                                                                                                                                                                                                                                                               |
+| ~*longitud*~ |                                      |                                                                                                                                                                                                                                                                                                               |
++--------------+--------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `x=`         | Un objeto                            | Un objeto para ser coaccionado o verificado como vector de tipo *doble*.                                                                                                                                                                                                                                      |
++--------------+--------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| `...`        | Otros argumentos                     | Otros argumentos que serán pasados desde o hacia otras funciones.                                                                                                                                                                                                                                             |
++--------------+--------------------------------------+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
 
 : Argumentos para las funciones de creación y verificación de vectores *dobles*
 
-## Detalles
+\normalsize
 
-Un vector *doble* es una estructura fundamental de **R** destinada al almacenamiento exclusivo de datos de tipo *doble* en celdas contiguas, así como a la realización de operaciones individuales o en paralelo con los elementos de estas celdas. Los datos de tipo *doble* consisten en un formato de representación de números reales basado en la aritmética de *punto flotante*.
+## Detalles {#detalles .subtitle}
 
-La aritmética de *punto flotante* es el formato más extendido entre las computadoras actuales para aproximarse a la aritmética de los números reales y realizar cálculos con ellos. En esencia, es un formato de almacenamiento que permite simular un conjunto infinito de números continuos ---los reales--- con los elementos de un conjunto finito de números discretos ---los dígitos de la máquina--- (Mulller et al. 2018, 3). El nombre del formato proviene de la posibilidad de colocar el separador decimal ---el punto--- en cualquiera de los dígitos disponibles para almacenar una cifra, lo que permite ajustar el nivel de precisión del número representado. Si deseas obtener más información al respecto, puedes consultar más adelante la sección *La aritmética de punto flotante*.
+### Funciones para crear vectores *dobles* {#funciones-crear .subtitle}
 
-Específicamente, **R** define al tipo *doble* como una aplicación de la aritmética de *punto flotante* para representar a un subconjunto de los números reales con signo, separador de decimales, y precisión limitada, en un tamaño de memoria de 64 dígitos binarios (*bits*) por cifra completa. Esto equivale a la posibilidad de almacenar valores reales en el intervalo aproximado de $-1.8 \times 10^{308}$ a $1.8 \times 10^{308}$, o, en valor absoluto, entre $|\mp2 \times 10^{-308}|$ y $|\mp1.8 \times 10^{308}|$. Así, los vectores *dobles* son el único tipo de dato en **R** que permite guardar números reales y realizar operaciones aritméticas con ellos.
+Las funciones básicas para crear vectores *dobles* son `double()`, `as.double()`, [`numeric()`](numeric), [`as.numeric()`](numeric) y [`c()`](c%20%7Bbase%7D "c {base}")*.* Éstas son descritas a continuación*.*
 
-El primer tamaño de memoria estandarizado para guardar números reales fue de 32 *bits* y se denominó de *precisión simple* en el estándar 754-1985 del Instituto de Ingenieros Eléctricos y Electrónicos (IEEE por sus siglas en inglés) de Estados Unidos. El siguiente rango de almacenamiento para números reales fue de 64 *bits*, por lo que se le denominó de *precisión doble*. En la actualidad la denominación en dicho estándar (754-2019) para la *precisión simple* es *binaria32* (*binary32*) y para la *precisión doble, binaria64* (*binary64*) .
+`double()` creará un vector *doble* con el número de elementos especificado en el argumento de longitud, `length=`. Al momento de su creación, cada elemento del vector será igual a cero (`0`). Enseguida, se podrán [asignar](assignOps%20%7Bbase%7D "assignOps {base}") valores reales positivos o negativos, así como [valores no disponibles](NA%20%7Bbase%7D "NA {base}") (`NA` o `NA_real_`), al vector recientemente creado.
 
-La precisión doble implica que un número real podrá almacenarse con entre 15 y 17 cifras significativas exactas. A partir del dígito 16, algunos valores podrán ser almacenados de forma aproximada, debido a las características propias del almacenamiento de *punto flotante*. A partir del dígito 18, las cifras almacenadas tendrán una precisión inexacta. Finalmente, el límite máximo de cifras significativas representables para cualquier número real es de 22 dígitos.
+La función [`numeric()`](numeric) es idéntica, en propósito e internamente, a la función `double()`. Existe como una denominación más moderna para referirse a la función de creación de vectores *dobles*.
 
-Si deseas trabajar con números de más de 15 cifras significativas es recomendable el uso de paquetes especializados. Por ejemplo, el paquete **`Rmpfr`** permite realizar operaciones aritméticas con una precisión arbitraria. Con todo, los instrumentos físicos más avanzados de la actualidad no suelen medir magnitudes menores a $10^{-15}$, y muy pocos campos de la ciencia necesitan precisiones mayores a este umbral, por lo que un amplio número de aplicaciones estadísticas pueden realizarse apropiadamente con la *precisión doble* (Mulller *et al*. 2018, 3).
+`as.double()` intentará convertir al objeto referido en el argumento `x=` a un vector de tipo *doble* y, en caso de tener éxito, devolverá al objeto como un vector de este tipo (`"double"`). Si la coacción no ha sido exitosa, el resultado será un mensaje de error o un valor no disponible (`NA`) por cada elemento no coaccionado.
 
-Como es evidente, los límites del almacenamiento para números reales en **R** ( $\mp1.8 \times 10^{308}$) comprenden cifras mucho más precisas que el despliegue, en el mejor de los casos, de 17 cifras significativas exactas. Para resolver esta aparente contradicción, **R** utiliza la notación cienftífica E, que es una forma abreviada de la notación científica tradicional. Debido a que el despliegue de exponentes con superíndices (como en $10^n$) no puede realizarse en el codigo fuente, **R** utiliza la notación `Me+N` para denotar "un número *M* multiplicado por 10 y elevado a la potencia de un número *N*", lo que en notación científica tradicional sería escrito como: $m \times 10^{n}$.
+La función [`as.numeric()`](as.numeric) es idéntica, en propósito e internamente, a la función `as.double()`. Existe como una denominación más moderna para referirse a la función de conversión de vectores *dobles*.
 
-De este modo, las funciones básicas para crear vectores *dobles* son `double()`, `as.double()` y [`c()`](c%20%7Bbase%7D "c {base}")*.* Por su parte, la función `is.double()` se utilizará para comprobar si un objeto es de [tipo](typeof%20%7Bbase%7D "typeof {base}") *doble* (`"double")`. En particular, `as.double()`, `is.double()` y [`c()`](c%20%7Bbase%7D "c {base}") son funciones [primitivas](Primitive%20%7Bbase%7D "Primitive {base}"), por lo que su código fuente está implementado de manera interna y no será visible directamente por la usuaria. Para más información sobre la forma de utilización de las funciones mencionadas, puedes consultar la sección *Valor devuelto* en esta misma página de ayuda.
+[`c()`](c%20%7Bbase%7D "c {base}") creará un vector *doble* si se utiliza para combinar valores reales que estén separados por comas, por ejemplo: `c(1.414214, 2.718282, 3.141593)`. La combinación de elementos con valores reales creará un vector de tipo *doble*. Para mayor información sobre la combinación de elementos para crear vectores de un determinado tipo puedes ver la página de ayuda de la función [`c()`](c%20%7Bbase%7D "c {base}").
 
-Las funciones `single()` y `as.single()` crearán también vectores de tipo *doble*, pero tendrán asignados el atributo adicional `"Csingle"` que indicará a nivel interno que los objetos creados deberán ser interpretados como un vectores de precisión *simple*. Los vectores *simples* pueden almacenar números reales con una precisión de siete cifras significativas exactas en el intervalo aproximado de $\mp3.4×10^{38}$ .
+En particular, las funciones `as.double()`, [`as.numeric()`](numeric) y [`c()`](c) son de tipo [primitivo](Primitive "Primitive {base}"), por lo que su código fuente está implementado de manera interna y no será visible directamente por la usuaria.
 
-Como objetos, los vectores *dobles* son un [tipo de vector](vector%20%7Bbase%7D "vector {base}") *atómico* o fundamental de **R**, por lo que no podrán convertirse en objetos más simples ni contener elementos que no sean del mismo tipo. Los [vectores atómicos](vector%20%7Bbase%7D "vector {base}") están definidos a nivel interno por su [tipo de almacenamiento](typeof%20%7Bbase%7D). El tipo de almacenamiento determina el tipo de vector y las operaciones que le son aplicables.
+La función `single()` creará un vector de tipo *doble* para almacenamiento y representación de números reales, con el atributo `"Csingle"` que permitirá identificar al vector como uno de tipo *simple* a nivel interno del código de **R**.
 
-El [tipo interno de almacenamiento](typeof%20%7Bbase%7D "typeof {base}") de un vector *doble* tendrá asignada como atributo la etiqueta inglesa *doble* (`"double")` y su [modo de almacenamiento](mode%20%7Bbase%7D) tendrá asociada como atributo la etiqueta inglesa *numérico* (`"numeric")`. Además, los vectores *dobles* pertenecen a la [clase](class%20%7Bbase%7D "class {base}")`"numeric"`, por lo que también podrán extender sus propiedades a nuevos objetos.
+La función `as.single()` intentará convertir cualquier objeto hacia un vector de tipo *doble* y añadirá el atributo `"Csingle"` que permitirá identificar al vector como uno de tipo *simple* a nivel interno del código de **R**.
 
-Los vectores de tipo *doble* (`"double"`) podrán almacenar valores enteros en forma exacta más allá del rango de almacenamiento del tipo *entero* (`"integer"`), el cual va, aproximadamente, de $\mp2\times10^9$ .
+El atributo `"Csingle"` será utilizado solamente en en la interfaz interna de **R** con los lenguajes de programación [C](C) y [Fortran](Fortran) para indicar que los objetos creados deberán ser interpretados como vectores de precisión simple. **R** no cuenta con el tipo de datos de precisión simple, por lo tanto, todos los números reales serán almacenados con el tipo de precisión doble.
 
-Para cada tipo de [vector](vector%20%7Bbase%7D "vector {base}") atómico, salvo para los vectores [crudos](raw%20%7Bbase%7D "raw {base}") (`"raw"`), existe un tipo propio de [valor no disponible](NA%20%7Bbase%7D "NA {base}") `NA`. Así, al tipo *doble* le corresponderá el valor no disponible `NA_real_`. Sin embargo, los valores no disponibles de los vectores *dobles* serán mostrados en pantalla solamente con los caracteres `NA`.
+Los vectores *dobles* podrán almacenar números reales en cada elemento con una precisión de 15 cifras significativas exactas en el intervalo aproximado de $\pm1.79×10^{308}$. Los vectores *simples* pueden almacenar números reales con una precisión de 7 cifras significativas exactas en el intervalo aproximado de $\pm3.4×10^{38}$. Para más información sobre la utilización de estas funciones, puedes consultar más adelante la sección *Valor devuelto*.
 
-Si deseas asegurarte de que los vectores *dobles* recibirán solamente valores no disponibles de tipo *doble*, puedes utilizar el valor `NA_real_` (en vez de la forma más simple `NA`) en las operaciones de [asignación](assign%20%7Bbase%7D "assign {base}"). Para más información puedes consultar más adelante la sección *Ejemplos*, así como la página de ayuda de los [valores no disponibles](NA%20%7Bbase%7D "NA {base}").
+### Funciones básicas para verificar vectores *dobles* {#funciones-verificar .subtitle}
 
-## Valor devuelto
+Por su parte, la función `is.double()` se utilizará para verificar si un vector es de [tipo](typeof%20%7Bbase%7D "typeof {base}") *doble* (`"double")`. En particular, `is.double()` es una función [primitiva](Primitive%20%7Bbase%7D "Primitive {base}"), por lo que su código fuente está implementado de manera interna y no será visible directamente por la usuaria.
 
-Cualquier cifra tecleada sin comillas ( `""` ) en la consola de **R** será devuelta como un número de tipo *doble* por el lenguaje. Es decir, **R** podrá identificar *literales* numéricos en el código fuente y los devolverá como valores numéricos constantes de tipo *doble*.
+La función [`is.numeric()`](numeric) comprobará si un vector es de [tipo](typeof%20%7Bbase%7D "typeof {base}") *doble* (`"double")` o de tipo [entero](integer) (`"integer")`. Por lo tanto, no es exclusiva para los vectores *dobles* sino para los objetos de [modo](mode) [numérico](numeric).
 
-**R** reconocerá literales numéricos en el sistema de numeración decimal y hexadecimal. Los valores en base decimal se escribirán tal cual, mientras que los valores en base hexadecimal deberán estar acompañados del prefijo `0x` o `0X` para indicar que se trata de números en esa base. Por ejemplo, la cifra `0x10` devolverá el valor *doble* `16` a partir de la representación hexadecimal ingresada. Por otro lado, la cifra en notación científica `1e3` devolverá el valor entero `1000` y será equivalente a haber ingresado el literal numérico `1000`.
+Para más información sobre la utilización de estas funciones, puedes consultar más adelante la sección *Valor devuelto*.
 
-El acceso a las celdas o los elementos de un vector *doble* se realizará por medio de las operaciones de [indización](Extract%20%7Bbase%7D "Extract {base}") ( `[ ]` ) de sus elementos tal como, por ejemplo: `un_vector[i]`; en donde `i` será el número índice del elemento que se desea [extraer](Extract%20%7Bbase%7D) o [almacenar](assign%20%7Bbase%7D "assign {base}").
+### Definición de los vectores *dobles* {#detalles-def .subtitle}
 
-La función `double()` creará un vector *doble* con el número de elementos especificado en el argumento de longitud, `length=`. Al momento de su creación, cada elemento del vector será igual a cero (`0`). Luego, se podrán [asignar](assignOps%20%7Bbase%7D "assignOps {base}") valores reales positivos o negativos, así como [valores no disponibles](NA%20%7Bbase%7D "NA {base}") (`NA`), al vector recientemente creado.
+Un vector *doble* es una estructura *atómica* o fundamental de **R** destinada al almacenamiento exclusivo de datos de tipo *doble* en celdas contiguas, así como a la realización de operaciones individuales y en paralelo con los elementos de estas celdas [@becker1998]. Los datos de tipo *doble* consisten en un formato de almacenamiento y representación de números reales basado en la aritmética binaria de *punto flotante*. Particularmente, los vectores *dobles* son el único tipo de objeto en **R** que permite guardar, mostrar y realizar operaciones aritméticas con números reales.
 
-La función `double()` creará un vector doble con el número de elementos especificado en el argumento de longitud, `length=`. Al momento de su creación, cada elemento del vector será igual a cero (`0`). Luego, se podrán asignar valores de números reales, positivos o negativos, así como valores no disponibles (`NA_real_`), y valores numéricos especiales como el cero con signo (`+0`, `-0`).
+La aritmética binaria de punto flotante es el sistema interno más extendido entre las computadoras actuales para aproximarse a la aritmética decimal de los números reales. Básicamente, es un tipo de almacenamiento numérico, similar a la notación científica, pero con precisión y exactitud limitadas, que posibilita la representación en pantalla de un conjunto de números continuos ---los reales--- con los elementos de un conjunto de números discretos ---los dígitos de la máquina o *bits*--- [@muller2018, 3]. El almacenamiento de valores continuos a partir de un número de *bits* discreto implica, además, que sólo algunos números reales podrán ser almacenados de forma exacta [@borgwardt2010].
 
-Además, los vectores *dobles* también podrán almacenar valores no numéricos (`NaN`) derivados de operaciones matemáticas no definidas ---como la división entre cero--- , el infinito positivo (`+Inf`, `Inf`) y el infinito negativo (`-Inf`).
+Así, cuando exista una cifra que el formato no pueda almacenar exactamente, ésta será redondeada en pantalla a un número de cifras predeterminado. Esto conlleva, a su vez, que los números reales representados podrán tener un valor interno marginalmente diferente al que aparece en la pantalla. La diferencia entre el valor almacenado de algunas cantidades y su valor representado es uno de los rasgos más característicos de la aritmética de punto flotante [@goldberg1991].
 
-La función `as.double()` intentará coaccionar al objeto referido en el argumento `x=` al tipo *doble* y, en caso de tener éxito, devolverá al objeto como un vector de este tipo (`"double"`). Si la coacción no ha sido exitosa, el resultado será un valor no disponible (`NA`).
+Específicamente, **R** define al tipo de datos *doble* como un formato de almacenamiento que utiliza la aritmética binaria de *punto flotante* con un tamaño de memoria interno de 64 dígitos binarios (8 *bytes*) para representar, externamente, a un subconjunto amplio de los números reales del sistema de numeración decimal, con signo y punto decimal. Esto equivale a la posibilidad de representar magnitudes reales en el intervalo que va, aproximadamente, de $-1.79 \times 10^{308}$ a $1.79 \times 10^{308}$, y con una precisión aproximada de fracciones decimales en el rango que va desde $\pm2 \times 10^{-308}$ a $\pm1.79 \times 10^{308}$.
 
-Las cadenas de caracteres que contengan representaciones de números del sistema decimal o hexadecimal (las cuales comienzan con `0x` o `0X`) entre espacios en blanco iniciales o finales se podrán convertir a valores *dobles*. No obstante, cada cadena de caracteres deberá contener una sola representación numérica sin espacios intercalados, de lo contrario esos elementos serán coaccionados como valores no disponibles (`NA`).
+Originalmente, el primer tamaño de memoria estandarizado para guardar números reales en punto flotante fue de 32 *bits* y se denominó como *precisión simple* en el estándar IEEE 754-1985 del Instituto de Ingenieros Eléctricos y Electrónicos de Estados Unidos (IEEE por sus siglas en inglés). El siguiente rango de almacenamiento para números reales fue de 64 *bits*, por lo que se le denominó como *precisión doble*. En la actualidad, el estándar IEEE-754-2019 utiliza la denominación *binaria32* (*binary32*) para la precisión simple, y *binaria64* (*binary64*) para la precisión doble.
 
-Además, las cadenas de caracteres que contengan el nombre de valores numéricos especiales de **R** como, por ejemplo, `"NA"`, `"NaN"`, `"Inf"` e incluso, `"infinity"`, serán convertidas a sus respectivos valores especiales.
+Todas las plataformas de sistema en las que se implementa **R** están basadas en el estándar internacional ISO/IEC 60559 de la Comisión Internacional de Electrotecnia de la Organización Internacional para la Estandardización (ISO, por sus siglas en inglés), equivalente al estándar 754 del IEEE. De acuerdo con dichos estándares, los valores de precisión doble destinarán ocho *bytes* por número guardado, lo que implica que se usarán 64 dígitos binarios para el almacenamiento y hasta 22 dígitos decimales para la representación en pantalla de un número real.
 
-`as.double()` eliminará los atributos, incluidos los nombres, de los objetos coaccionados, tal como lo hace la función [`as.vector()`](vector%20%7Bbase%7D "vector {base}"). Para asegurarte de que un objeto *`x`* permanezca con el tipo *doble* sin perder sus atributos, podrás asignar a un vector la etiqueta del tipo *doble* (`"double"`) con la función `storage.mode()`, por ejemplo, como en: `storage.mode(x) <- "integer"`. Esta forma de coacción hacia el tipo *doble* tiene la ventaja de modificar el [tipo de almacenamiento](mode%20%7Bbase%7D "mode {base}") sin eliminar los atributos del objeto.
+Los bits de almacenamiento se distribuyen de la siguiente manera: un bit corresponde al signo del significante, once bits corresponden al exponente de la base, y los 52 bits restantes almacenarán al significante. Para más información sobre estos conceptos, puedes consultar la sección *El almacenamiento de números reales*. En términos prácticos, esto implica que podrán representarse siempre números reales con signo con una exactitud decimal de hasta 15 cifras significativas, mientras que el resto de dígitos se usarán para representar números con una exactitud menor. Finalmente, el estándar contempla el almacenamiento y representación de valores especiales para las operaciones matemáticas no definidas ((`NaN`)), los valores menos y más infinito (`-Inf`, `Inf`) y a los valores menos y más cero (`-0`, `+0`). Estos últimos son equivalentes al valor cero (`0`).
 
-La función `as.integer()` intentará coaccionar al objeto referido en el argumento `x=` al tipo *entero* y lo devolverá como un vector de este tipo. Si la coacción no ha sido exitosa, el resultado será un valor no disponible (`NA`).
+En las computadoras modernas, la aritmética de punto flotante está implementada directamente desde la maquinaria del equipo, en la Unidad de Punto Flotante (FPU, por sus siglas en inglés) o coprocesador matemático. Por lo tanto, en última instancia, el manejo de los números de precisión doble dependerá de las características del procesador (CPU, por sus siglas en inglés), la FPU y el compilador de la computadora donde se instale **R**. Para más información sobre los límites de almacenamiento numérico para tu plataforma de sistema puedes ver la página de ayuda sobre las [características numéricas del equipo](.Machine).
 
-Cuando se intente coaccionar un valor al tipo *entero*, o se ingrese un literal entero en la consola, y éste sea mayor o menor a los límites del intervalo de almacenamiento, se devolverá un [valor no disponible](NA%20%7Bbase%7D "NA {base}") (`NA`). Este comportamiento es diferente al de *S*, que devolvía un valor del mismo signo igual al límite del intervalo de almacenamiento.
+### El despliegue en pantalla de los valores *dobles* {#detalles-despliegue .subtitle}
 
-Cuando `as.integer()` reciba valores con números reales, las fracciones decimales de estos valores serán truncados hacia el cero siempre y cuando se encuentren dentro del intervalo de almacenamiento entero. Esto significa que `as.integer(x)` funcionará igual que `trunc(x)` en estos casos. Del mismo modo, las partes imaginarias de los valores de [números complejos](complex%20%7Bbase%7D "complex {base}") se descartarán con una advertencia.
+Las cifras en formato *doble* aparecerán en pantalla en notación fija del sistema de numeración decimal. De manera predeterminada, **R** desplegará hasta 7 dígitos para cualquier valor numérico. Si la cifra incluye fracciones decimales, entonces el punto decimal ocupará uno de estos dígitos. Cuando la usuaria desee desplegar más dígitos en la pantalla, deberá especificarlo con el argumento `digits=` de la función [`options()`](options). No obstante, debido a los límites de la precisión doble, el número máximo de dígitos desplegables será de 22, de los cuales sólo los primeros 15 dígitos podrán representar siempre valores exactos. En consecuencia, a partir del dígito 16 algunos valores podrán estar representados de forma aproximada.
 
-`as.integer()` podrá convertir en valores enteros a aquellas cadenas de caracteres (es decir, literales entre comillas) que contengan representaciones de números del sistema decimal o hexadecimal entre espacios en blanco iniciales o finales. No obstante, cada cadena de caracteres deberá contener una sola cifra, sin espacios intercalados, de lo contrario esos elementos serán coaccionados en valores no disponibles (`NA`). Algunas plataformas de sistema operativo podrían aceptar la coacción de cadenas de caracteres que representen números en otros sistemas de numeración diferentes al decimal o al hexadecimal, como el binario o el octal.
+En un sentido práctico, la *precisión* alude al número de dígitos significativos que podrán ser desplegados en pantalla, independientemente de su exactitud. Por otra parte, la *exactitud* se refiere a que la diferencia entre el valor almacenado y el representado en pantalla.
 
-`as.integer()` eliminará los atributos, incluidos los nombres, de los objetos coaccionados, tal como lo hace la función [`as.vector()`](vector%20%7Bbase%7D "vector {base}"). Para asegurarte de que un objeto *`x`* permanezca con el tipo *entero* sin perder sus atributos, podrás asignar a un vector la etiqueta del tipo *entero* (`"integer"`) con la función `storage.mode()`, por ejemplo, como en: `storage.mode(x) <- "integer"`. Esta forma de coacción hacia el tipo *entero* tiene la ventaja de modificar el [tipo de almacenamiento](mode%20%7Bbase%7D "mode {base}") sin eliminar los atributos del objeto.
+::: {.callout-caution appearance="minimal"}
+Debido a estas características, la comparación de igualdad para dos números que en pantalla sean desplegados de manera idéntica podría devolver un [valor lógico](logical) falso (`FALSE`), pues el resto de decimales ocultos sería diferente. A menudo, este nivel de precisión no tiene ningún significado. Por ello, para realizar comprobaciones lógicas sobre la igualdad de valores reales puedes utilizar preferentemente la función [`all.equal()`](#0), la cual comprobará la igualdad de los valores hasta un nivel de exactitud más práctico.
+:::
 
-La función [`c()`](c%20%7Bbase%7D "c {base}") devolverá un vector *entero* si se utiliza para combinar valores enteros que estén separados por comas, siempre que al final de cada valor numérico se añada, sin mediar espacio, la letra ele mayúscula (`L`), por ejemplo: `c(1L, 2L, 3L)`. El resultado de la combinación de elementos enteros creará un vector de tipo *entero* si ninguno de los valores combinados tiene valores decimales. Para mayor información sobre la combinación de elementos para crear vectores de un determinado tipo puedes ver la página de ayuda de la función [`c()`](c%20%7Bbase%7D "c {base}").
+Por otra parte, los límites de la representación de los números reales en **R** ( $\pm1.79 \times 10^{308}$) comprenden cifras mucho más precisas que el despliegue de 15 cifras significativas exactas y 22 aproximadas. Por ello, cuando un número tenga más de 22 cifras significativas pero se encuentre dentro de los límites del almacenamiento *doble*, **R** desplegará en pantalla una forma abreviada de la notación científica, denominada *notación científica E*. La notación científica E desplegará las cifras en pantalla en el formato `Me±N` para denotar "un número *M* multiplicado por la base 10 elevada a la potencia *N*", en donde el número que sigue a la letra `e` representa el exponente al que se elevará la base 10. Así, en notación científica tradicional la notación E sería escrita como: $m \times 10^{n}$, donde $m$ es un número decimal positivo o negativo con separador fraccionario (el punto o la coma decimal) y $n$ es un valor entero positivo o negativo.
 
-La función `is.integer()` devolverá el [valor lógico](logical%20%7Bbase%7D "logical {base}") verdadero (`TRUE`) o falso (`FALSE`) dependiendo de si el objeto referido en el argumento `x=` es de tipo *entero*, es decir, de si el vector tiene asociada internamente la etiqueta `"integer"`. Toma en cuenta que esta función sólo verificará el [tipo de almacenamiento específico](typeof%20%7Bbase%7D "typeof {base}") del vector, no si los objetos contenidos en él son, matemáticamente, números enteros; para más información puedes ver las secciones *Nota* y *Ejemplos* en esta página de ayuda. En el caso de los [factores](base%20%7Bfactor%7D "base {factor}"), que asocian números enteros a valores categóricos, `is.integer()` devolverá el valor lógico falso (`FALSE`) al momento de verificar el tipo del objeto.
+Si bien el despliegue de superíndices (de la forma $x^n$) no puede realizarse en la consola de **R**, la notación científica E (`Me±N`) logra calcular la elevación de potencias de base 10 en forma práctica. De esta manera, **R** consigue representar números con más de 15 cifras significativas de forma exacta siempre que se encuentren dentro de los límites del almacenamiento *doble*. No obstante, cuando los valores sean demasiado grandes o demasiado pequeños para ser representados adecuadamente, incluso con la notación científica E, los valores se desbordarán al infinito (`±Inf`) o serán absorbidos al cero (`0.0`). En el primer caso, los vectores *dobles* representarán al infinito positivo con los literales `+Inf` o `Inf` y al infinito negativo con los caracteres `-Inf`.
 
-## \<Sección adicional\>
+Si deseas trabajar con números con más de 15 cifras significativas exactas en notación decimal fija (es decir, sin notación científica) o, incluso, realizar cálculos con tipos exactos, es recomendable el uso de paquetes especializados. Por ejemplo, el paquete **{`Rmpfr`}** permite realizar operaciones aritméticas con números de precisión decimal arbitraria y sin error de redondeo. Con todo, pocos campos de la ciencia necesitan precisiones mayores a este umbral, por lo que un gran número de aplicaciones estadísticas pueden realizarse apropiadamente tan solo con la *precisión doble* [@muller2018, 3].
 
-En computación, la *precisión* de una cifra alude al número de dígitos significativos que pueden ser desplegados en pantalla, independientemente de su exactitud. Por su parte, la *exactitud* de un formato de almacenamiento se refiere a la correspondencia entre la cifra almacenada internamente y la desplegada en la pantalla del ordenador. Para más información al respecto, puedes ver más adelante la sección *El tipo de almacenamiento doble*.
+Para cada tipo de vector atómico, salvo para los [vectores crudos](raw) (`"raw"`), existe un tipo propio de valor no disponible, representado en pantalla por los caracteres `NA` (del inglés *Not Available* o No Disponible). Así, al tipo *doble* le corresponderá, a nivel interno, el valor no disponible `NA_real_`. Si deseas asegurarte de que los vectores *dobles* reciban solamente valores no disponibles de tipo *doble*, puedes utilizar directamente el literal `NA_real_` (en vez de la forma más simple `NA`) en las operaciones de asignación de la consola o del código fuente. Para mayor información puedes consultar más adelante la sección *Ejemplos*, así como la página de ayuda de los [valores no disponibles](NA).
 
-## Nota
+Por otro lado, si se realizan operaciones matemáticas no definidas ---como la división de cero entre cero o la resta de infinitos--- **R** desplegará un valor no disponible especial representado en pantalla como `NaN`, cuyos caracteres significan *Valor No Numérico* (del inglés *Not a Number*).
+
+### Características de los vectores dobles como objetos {#objetos .subtitle}
+
+Los vectores *dobles* (`"double"`), como todos los vectores atómicos, no podrán contener elementos que no sean del mismo tipo. No obstante, los vectores de tipo *doble* sí pueden almacenar valores enteros en forma exacta más allá del rango de almacenamiento del [tipo entero](integer) (`"integer"`), el cual va, aproximadamente, de $\pm2\times10^9$.
+
+**R** cuenta con dos denominaciones para referirse a los vectores que almacenan números reales: `"double"` y `"numeric"`, lo que responde a una inercia histórica. En las primeras versiones de **R**, además, se usaba el tipo `"real"`, [desaparecido](defunct) a partir de la versión 3.0.0. Para evitar confusiones, es conveniente distinguir entre el [*tipo*](#0) y el [*modo*](mode) de almacenamiento, así como entre las [*clases*](class) de objetos que existen en **R**.
+
+El formato de los datos que puede almacenar un vector atómico está definido por el [tipo de almacenamiento](typeof). Especialmente, **R** cuenta con tres tipos de almacenamiento numérico: el [tipo *entero*](integer), el tipo *doble* y el [tipo *complejo*](complex). Mientras que el tipo de almacenamiento es una clasificación excluyente, el [modo de almacenamiento](mode) es una clasificación genérica. Ello permite agrupar a algunos tipos de almacenamiento con características similares en una sola categoría. Por ejemplo, los vectores *dobles* y los *enteros* comparten en común el modo de almacenamiento *numérico* (`"numeric"`), de forma que será posible identificarlos como objetos similares para algunas tareas en común.
+
+Además de poseer un tipo y un modo de almacenamiento, los vectores son esencialmente entidades abstractas u objetos del lenguaje que poseen atributos. Uno de los atributos más importantes de cualquier objeto es su [clase](class), la cual determina los métodos y funciones que podrán aplicársele. En este sentido, todos los tipos numéricos de **R** poseen una clase propia que define las operaciones matemáticas y estadísticas que les corresponden.
+
+Así, el [tipo *entero*](integer) (`"integer"`) pertenece a la [clase *entero*](integer-class) (`"integer"`), el tipo *doble* (`"double"`) pertenece a la [clase *numérico*](BasicClasses-methods) (`"numeric"`), y el [tipo *complejo*](complex) (`"complex"`) pertenece a la [clase complejo](BasicClasses-methods) (`"complex"`). De esta manera, los objetos de la clase *entero* admiten las operaciones aritméticas y estadísticas básicas. La clase *numérico* (el tipo *doble*) admite todas las operaciones aritméticas y estadísticas aplicables a la clase *entero*, y, además, permite operaciones estadísticas más avanzadas. Finalmente, la clase *complejo* (el tipo *complejo*) admite todas las operaciones que se pueden realizar con la clase *entero* y *numérico*, pero también las operaciones aritméticas propias de los números complejos.
+
+Si se realiza una operación en común entre objetos numéricos de diferente clase, **R** coaccionará a los objetos involucrados a la clase que admita más operaciones, y promoverá el tipo de almacenamiento del vector al de la clase correspondiente. Es decir, si se realiza una operación matemática entre un vector *entero* y uno *doble*, el resultado será un vector de tipo *doble*. Y si se realiza una operación entre vectores *enteros*, *dobles* y *complejos*, el resultado será un vector de tipo *complejo*.
+
+## Valor devuelto {#valor .title}
+
+Cualquier número tecleado sin comillas ( `""` ) en la consola de **R** será devuelto como un valor de tipo *doble* por el lenguaje. Es decir, **R** podrá identificar *literales* o [constantes numéricas](constants) en el código fuente y las devolverá como valores numéricos de tipo *doble*.
+
+**R** reconocerá [constantes numéricas](Constants) en el sistema de numeración decimal y hexadecimal. Los valores en base decimal se escribirán tal cual, mientras que los valores en base hexadecimal deberán estar acompañados del prefijo `0x` o `0X` para indicar que se trata de cifras en este sistema de numeración. Por ejemplo, la cifra `0x10` devolverá el valor *doble* `16` a partir de la representación hexadecimal ingresada. Por otro lado, la cifra en notación científica E `1e+3` (o también `1e3`) devolverá el valor entero `1000` y será equivalente a haber ingresado el literal numérico `1000`.
+
+El acceso a las celdas o los elementos de un vector *doble* se realizará por medio de las operaciones de [indización](Extract%20%7Bbase%7D "Extract {base}") ( `[ ]` ), tal como, por ejemplo: `un_vector[i]`; en donde `i` será el número índice del elemento que se desee [extraer](Extract%20%7Bbase%7D) o [almacenar](assign%20%7Bbase%7D "assign {base}"). Para almacenar valores dentro del vector deberá usarse la indización con el operador de asignación ( `<-` ). Por ejemplo, la expresión: `un_vector[2] <- 3.14159` asignará a la segunda celda del objeto `un_vector` el valor real 3.14159.
+
+La función `double()` creará un vector *doble* con el número de elementos especificado en el argumento de longitud, `length=`. Al momento de su creación, cada elemento del vector será igual a cero (`0`). Luego, se podrán [asignar](assignOps%20%7Bbase%7D "assignOps {base}") valores reales positivos o negativos, así como [valores no disponibles](NA%20%7Bbase%7D "NA {base}") (`NA_real_`), al vector recientemente creado.
+
+La función `as.double()` intentará coaccionar los elementos del objeto referido en el argumento `x=` al tipo *doble* y, en caso de tener éxito, devolverá al objeto como un vector de este tipo (`"double"`). Si la coacción no ha sido exitosa, el resultado será un valor no disponible (`NA`).
+
+Las cadenas de caracteres que contengan representaciones de números del sistema decimal o hexadecimal (las cuales comenzarán con `0x` o `0X`) entre espacios en blanco se podrán coaccionar a valores *dobles*. No obstante, cada cadena de caracteres deberá contener una sola representación numérica sin espacios intercalados. De lo contrario, esos elementos serán coaccionados como valores no disponibles (`NA`).
+
+Además, las cadenas de caracteres que contengan el nombre de valores numéricos especiales de **R** como, por ejemplo, `"NA"`, `"NaN"`, `"Inf"` e, incluso, `"infinity"`, serán convertidas a sus respectivos valores especiales.
+
+`as.double()` eliminará los atributos, incluidos los nombres, de los objetos coaccionados, tal como lo hace la función [`as.vector()`](vector%20%7Bbase%7D "vector {base}"). Para asegurarte que después de la coacción un objeto *`x`* permanezca con el tipo *doble* sin perder sus atributos originales, deberás asignar al objeto la etiqueta del tipo *doble* (`"double"`) con la función [`storage.mode()`](typeof). Por ejemplo, como en: `storage.mode(x) <- "double"`. Esta forma de coacción hacia el tipo *doble* tiene la ventaja de modificar el [tipo de almacenamiento](mode%20%7Bbase%7D "mode {base}") sin eliminar los atributos del objeto.
+
+La función `as.double()` aplicada a [factores](factor) devolverá los códigos numéricos detrás de los niveles o etiquetas del factor. Sin embargo, cuando las etiquetas del factor sean ellas mismas valores numéricos y la usuaria desee preservar el valor numérico de las etiquetas al convertir los elementos del factor al tipo *doble*, se deberá, entonces, extraer primero los valores numéricos de las etiquetas en forma de [*carácter*](character) y, luego, convertirlos al formato *doble*. Para más información, puedes ver más adelante la sección *Ejemplos* así como la página de ayuda de la función [`factor()`](factor).
+
+Cuando se intente coaccionar un valor al tipo *doble*, o se ingrese un literal numérico en la consola, y éste sea mayor o menor a los límites del intervalo de almacenamiento, **R** devolverá el valor infinito positivo (`+Inf`, `Inf`) o negativo (-`Inf`) dependiendo del signo del literal ingresado.
+
+La función [`c()`](c%20%7Bbase%7D "c {base}") devolverá un vector *doble* si se utiliza para combinar valores reales que estén separados por comas, por ejemplo: `c(1.414214, 2.718282, 3.141593)`. El resultado de la combinación de elementos reales creará un vector de tipo *doble*. Para mayor información sobre la combinación de elementos para crear vectores de un determinado tipo puedes ver la página de ayuda de la función [`c()`](c%20%7Bbase%7D "c {base}").
+
+La función `is.double()` devolverá el [valor lógico](logical%20%7Bbase%7D "logical {base}") verdadero (`TRUE`) o falso (`FALSE`) dependiendo de si el objeto referido en el argumento `x=` es de tipo *doble*, es decir, de si el vector tiene asociada internamente la etiqueta `"double"`. En el caso de los [factores](base%20%7Bfactor%7D "base {factor}"), que asocian números enteros a valores categóricos, `is.double()` devolverá el valor lógico falso (`FALSE`) al momento de verificar el tipo del objeto.
+
+La función [`numeric()`](numeric) es idéntica, internamente, a la función `double()`. Así, `numeric()` devolverá un vector de precisión doble con el número de elementos especificados en el argumento de longitud, `length=`. Los elementos del vector creado serán todos iguales a cero (`0`).
+
+La función [`as.numeric()`](numeric) intentará coaccionar al objeto referido en el argumento `x=` para convertir sus elementos al tipo *doble* y, en caso de tener éxito, devolverá al objeto como un vector de este tipo (`"double"`).
+
+La función [`is.numeric()`](numeric) devolverá el [valor lógico](logical) verdadero (`TRUE`) si el objeto especificado en su argumento `x=` se trata de un vector *entero* o de uno *doble*, pues verificará el modo de almacenamiento genérico del objeto, mientras que `as.numeric()` transformará, de tener éxito, los valores de un objeto a números reales y asignará el tipo de almacenamiento `"double"` al objeto coaccionado.
+
+## El almacenamiento de números reales {#almacenamiento .title}
+
+En computación, el tipo *de almacenamiento* o *de dato* es una categorización de un conjunto de valores y de operaciones definidas para esos valores. Así, un tipo de almacenamiento se caracteriza por un conjunto de objetos con la misma representación. En el caso de los números reales ($\mathbb{R}$), existen diversos tipos de datos que permiten representar y realizar operaciones matemáticas con ellos. Algunas denominaciones de estos tipos de datos son, por ejemplo: *single*, *float* o *double.*
+
+Si bien existen diferentes tipos de datos para almacenar números reales, la mayoría de las computadoras modernas utilizan un mismo sistema para trabajar con ellos, denominado *aritmética binaria de* *punto flotante*. De este modo, la variación en las denominaciones de los tipos de datos para números reales proviene, en la mayoría de lenguajes de programación, de variaciones en el grado de implementación de la precisión de la aritmética de punto flotante.
+
+La aritmética binaria de punto flotante es el formato más popular entre las computadoras actuales para almacenar y representar números reales. En términos coloquiales, los números reales son aquellos que se pueden representar con la marca del separador de enteros de las fracciones decimales, ya sea que la marca utilizada sea el punto ( $.$ ) o la coma ( $,$ ), y pueden ser números tanto positivos como negativos incluyendo al cero ($0$). En términos matemáticos, los números reales se refieren al conjunto $\mathbb{R}$ que comprende a los subconjuntos de los números racionales $\mathbb{Q}$ y a los irracionales.
+
+A su vez, los números racionales son aquellos que pueden ser expresados como el cociente $\frac{a}{b}$ de dos números enteros ($\mathbb{Z}$), en donde $b$ es un número diferente de cero. Por su parte, los números irracionales son aquellos que no pueden ser representados exactamente por el cociente o razón de dos números enteros porque su representación decimal se extiende de manera infinita.
+
+En esencia, la aritmética binaria de punto o coma flotante es una aproximación a la aritmética de los números reales basada en la representación de un subconjunto finito del conjunto de los números reales $\mathbb{R}$. Dicha representación consiste en la utilización de un entero con precisión fija, llamado *significante*, multiplicado por una *base* fija elevada a un *exponente*. Es un formato similar a la notación científica, pero con precisión limitada, capaz de conceptualizar valores especiales como el infinito ($\infty$) o de advertir cuando se realizan operaciones aritméticas no definidas.
+
+A diferencia de la notación científica, en la cual el punto decimal permanece fijo, la denominación *punto flotante* se deriva de la posibilidad de que el separador de decimales (o de fracciones en otras bases numéricas) pueda situarse en cualquiera de los dígitos disponibles. A grandes rasgos, en Africa Oriental, Asia, Australia, Centroamérica y Norteamérica el separador de la enteros y fracciones es el punto ( $.$ ), mientras que en África Occidental, Europa (salvo Gran Bretaña), Sudamérica y Sureste Asiático se utiliza la coma ( $,$ ). Por otro lado, en algunos países del mundo árabe se utiliza el apóstrofo ( $'$ ) [@decimal2023]. Cuando la base del sistema de numeración es el número diez, al separador de fracciones se le llamará punto decimal.
+
+Básicamente, un número en formato de punto flotante tiene cinco componentes: i) un signo $s$ el cual puede adoptar los valores de $0$ o $1$ para indicar un valor positivo o negativo, respectivamente; ii) una base fija $\beta$ mayor o igual a dos ($\beta ≥ 2$); iii) una precisión $p$ mayor o igual a dos ($p≥2$) que consiste en el número de dígitos significativos del número representado en la base numérica designada; iv) Un exponente $e$ dentro de un rango que va de $e_{min}$ a $e_{max}$ y que atraviesa el cero ($e_{min} < 0 < e_{max}$); y v) un coeficiente o significante $m$ tal que sea mayor o igual a cero y menor a la magnitud de la base $\beta$ ($0 ≤ m < \beta$) y que, además, cuente con al menos un dígito antes de la marca de separación de fracciones de la base y $p-1$ dígitos después de ésta. De esta manera, un número de punto flotante $x$ es uno para el cual existe al menos una representación exacta en función de los componentes $s$, $\beta$, $p$, $e$ y $m$ de la forma:
+
+$$
+x = (-1)^{s} \cdot m \cdot \beta^e
+$$
+
+De acuerdo con estos parámetros, el estándar ISO/IEC 60559 requiere que un número de punto flotante tenga una base binaria ($\beta =2$) y que el exponente mínimo $e_{min}$ sea igual al valor negativo del exponente máximo $e_{max}$ más una unidad ($e_{min} = 1 - e_{max}$). Del mismo modo, dependiendo de la precisión decimal deseada, el significante $m$ podrá estar compuesto de hasta 11, 24, 53 o 113 bits, correspondientes a la los formatos de precisión media (*binaria16*), simple (*binaria32*), doble (*binaria64)* y cuádruple (*binaria128*). En la tabla 2 se puede observar la especificación de precisiones y exponentes correspondiente a cada formato.
+
+\small
+
++----------------------------------------+-----------------+------------------+-----------------+---------------------+
+| Parámetro                              | Precisión media | Precisión simple | Precisión doble | Precision Cuádruple |
++========================================+=================+==================+=================+=====================+
+| Nombre oficial del formato             | *binario16*     | *binario32*      | *binario64*     | binario128          |
++----------------------------------------+-----------------+------------------+-----------------+---------------------+
+| Dígitos de almacenmiento totales       | 16              | 32               | 64              | 128                 |
++----------------------------------------+-----------------+------------------+-----------------+---------------------+
+| Base numérica del formato ($\beta$)    | 2               | 2                | 2               | 2                   |
++----------------------------------------+-----------------+------------------+-----------------+---------------------+
+| Dígitos del significante ($p$)         | 11              | 24               | 53              | 113                 |
++----------------------------------------+-----------------+------------------+-----------------+---------------------+
+| Dígitos del exponente ($e$)            | 5               | 8                | 11              | 15                  |
++----------------------------------------+-----------------+------------------+-----------------+---------------------+
+| Valor mínimo del exponente ($e_{min}$) | -14             | -126             | -1022           | -16382              |
++----------------------------------------+-----------------+------------------+-----------------+---------------------+
+| Valor máximo del exponente ($e_{max}$) | +15             | +127             | +1023           | +16383              |
++----------------------------------------+-----------------+------------------+-----------------+---------------------+
+
+: Parámetros de los diversos formatos de almacenamiento binario de punto flotante de acuerdo al estándar ISO/IEC 60559. {tbl-colwidths="\[22,20,20,20,20\]"}
+
+\normalsize
+
+Los parámetros especificados en la tabla 2 definen los límites de almacenamiento de cada formato. No obstante, cabe destacar que la aritmética binaria de punto flotante fue diseñada para realizar cálculos científicos en diversas disciplinas. Si bien los cálculos científicos no necesitan una precisión ilimitada, a menudo involucran la necesidad de trabajar simultáneamente con magnitudes muy grandes y muy pequeñas. Esto representa una restricción porque, al igual que los enteros, los números reales deben ser almacenados con un número limitado de bits. Al destinar más dígitos a la representación de casos extremos, la precisión de las cifras representadas tenderá a reducirse gradualmente [@evans2023].
+
+En consecuencia, el número *normalizado* más grande estará definido por la formula $2^{e_{max}}\times(2-2^{1-p})$, mientras que el número normalizado más pequeño será resultado de la fórmula $2^{e_{min}}$. Hablar de un número en su forma *normalizada* implica que el significante $m$ siempre será menor a la magnitud de la base $\beta$ pero mayor o igual a uno ($1 ≤ m < \beta$ ), o sencillamente, que el dígito inicial del significante será siempre igual a uno: $1.m_{1}m_{2}m_{3}...m_{p-1}$. Sin embargo, los números en punto flotante también pueden ser almacenados en su forma *denormalizada*, lo que implica que el significante podrá ser menor a uno y menor al valor de la base $\beta$ ($0 ≤ m < \beta$ ) o, sencillamente, que el dígito inicial del significante será siempre igual a cero: $0.m_{1}m_{2}m_{3}...m_{p-1}$. Los numeros normalizados podrán representarse de manera exacta mientras que los números denormalizados no podrán representarse siempre de forma exacta por lo que en algunas ocasiones tendrán que ser redondeados al número representable más cercano.
+
+## También véase {#véase .title}
+
+[`integer()`](integer), [`numeric()`](numeric) y [`storage.mode()`](storage.mode) y [`c()`](c)
+
+## Ejemplos {#ejemplo .title}
+
+```{r,eval=FALSE}
+
+a <- 0.3
+print(a)
+options(digits = 22)
+print(a)
+b <- 0.1 + 0.2
+print(b)
+a == b
+all.equal(a,b)
+options(digits = 7)
+print(a); print(b)
+
+
+is.double(1) 
+all(double(3) == 0)
+
+## La conversión recortará los espacios en blanco; 
+## las cadenas de texto no numéricas devolverán NA 
+## y una advertencia
+as.double(c("-.1"," 2.7 ","B"))
+as.double(c("infinity", "NaN", "NA", "Inf","3.14159","+0","-0"))
+
+## Los valores numéricos algunas veces serán convertidos
+## accidentalmente a factores. Convertirlos de vuelta a 
+## un vector numérico podría ser más complicado de lo que esperas.
+f <- factor(5:10)
+as.double(f) # no es lo que esperas y probablemente 
+## no es lo que desees hacer.
+## Lo que realmente esperas y deseas hacer:
+as.double(as.character(f))
+## lo mismo, pero considerablemente más 
+## eficiente para vectores largos:
+as.double(levels(f))[f]
+
+## Para verificar las funciones de la clase "numeric"
+ methods(class = "numeric") # all.equal   as.data.frame  as.Date  
+                            # as.POSIXct  as.POSIXlt  as.raster
+                            # coerce   Ops  
+```
+
+## Código fuente {#codigo .title}
+
+### double()
+
+```{r, eval=FALSE}
+ function (length = 0L)
+       .Internal(vector("double", length))
+```
+
+### as.double()
+
+```{r, eval=FALSE}
+function (x, ...)  
+      .Primitive("as.double")
+```
+
+### is.double()
+
+```{r, eval=FALSE}
+function (x)  
+      .Primitive("is.double")
+```
+
+### single()
+
+```{r, eval=FALSE}
+function (length = 0L)
+      structure(vector("double", length), Csingle = TRUE)
+```
+
+### as.single()
+
+```{r, eval=FALSE}
+function (x, ...)
+      UseMethod("as.single")
+```
+
+## Sobre esta traducción {#traduccion .title}
+
+La traducción al español de esta página de ayuda fue actualizada el 20 de mayo de 2023 y está basada en la documentación original de **R** en inglés para la versión 4.3.0. Es una versión extendida de la página de ayuda original y tiene como objetivo ampliar la información ofrecida en la versión inglesa. La revisión técnica de esta página de ayuda todavía no ha sido realizada. Si deseas participar revisando los aspectos estadísticos y de programación, o sugerir mejoras gramaticales, ortográficas o de estilo al texto, puedes dirigirte a la página del proyecto en: https://github.com/sicabi/documentacionR. Toda contribución será atribuida a la persona que la realice.
 
 ## Referencias
 
-## También véase
-
-## Ejemplos
-
-## Código fuente
-
-\[Paquete `{}` version 4.2.2 [Índice](%7Bbase%7D "{base}")\]
+{{< >}}
