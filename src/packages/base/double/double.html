@@ -1,0 +1,903 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.450">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>double</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="double_files/libs/clipboard/clipboard.min.js"></script>
+<script src="double_files/libs/quarto-html/quarto.js"></script>
+<script src="double_files/libs/quarto-html/popper.min.js"></script>
+<script src="double_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="double_files/libs/quarto-html/anchor.min.js"></script>
+<link href="double_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="double_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="double_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<script src="double_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="double_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="double_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="double_files/libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+
+
+</head>
+
+<body>
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Tabla de contenidos</h2>
+   
+  <ul>
+  <li><a href="#desc" id="toc-desc" class="nav-link active" data-scroll-target="#desc"><span class="header-section-number">1</span> Descripción</a></li>
+  <li><a href="#forma-de-uso-o-sintaxis" id="toc-forma-de-uso-o-sintaxis" class="nav-link" data-scroll-target="#forma-de-uso-o-sintaxis"><span class="header-section-number">2</span> Forma de uso o sintaxis</a></li>
+  <li><a href="#argumentos" id="toc-argumentos" class="nav-link" data-scroll-target="#argumentos"><span class="header-section-number">3</span> Argumentos</a></li>
+  <li><a href="#detalles" id="toc-detalles" class="nav-link" data-scroll-target="#detalles"><span class="header-section-number">4</span> Detalles</a>
+  <ul class="collapse">
+  <li><a href="#funciones-crear" id="toc-funciones-crear" class="nav-link" data-scroll-target="#funciones-crear"><span class="header-section-number">4.1</span> Funciones para crear vectores <em>dobles</em></a></li>
+  <li><a href="#funciones-verificar" id="toc-funciones-verificar" class="nav-link" data-scroll-target="#funciones-verificar"><span class="header-section-number">4.2</span> Funciones básicas para verificar vectores <em>dobles</em></a></li>
+  <li><a href="#detalles-def" id="toc-detalles-def" class="nav-link" data-scroll-target="#detalles-def"><span class="header-section-number">4.3</span> Definición de los vectores <em>dobles</em></a></li>
+  <li><a href="#detalles-despliegue" id="toc-detalles-despliegue" class="nav-link" data-scroll-target="#detalles-despliegue"><span class="header-section-number">4.4</span> El despliegue en pantalla de los valores <em>dobles</em></a></li>
+  <li><a href="#objetos" id="toc-objetos" class="nav-link" data-scroll-target="#objetos"><span class="header-section-number">4.5</span> Características de los vectores dobles como objetos</a></li>
+  </ul></li>
+  <li><a href="#valor" id="toc-valor" class="nav-link" data-scroll-target="#valor"><span class="header-section-number">5</span> Valor devuelto</a></li>
+  <li><a href="#almacenamiento" id="toc-almacenamiento" class="nav-link" data-scroll-target="#almacenamiento"><span class="header-section-number">6</span> El almacenamiento de números reales</a></li>
+  <li><a href="#véase" id="toc-véase" class="nav-link" data-scroll-target="#véase"><span class="header-section-number">7</span> También véase</a></li>
+  <li><a href="#ejemplo" id="toc-ejemplo" class="nav-link" data-scroll-target="#ejemplo"><span class="header-section-number">8</span> Ejemplos</a></li>
+  <li><a href="#codigo" id="toc-codigo" class="nav-link" data-scroll-target="#codigo"><span class="header-section-number">9</span> Código fuente</a>
+  <ul class="collapse">
+  <li><a href="#double" id="toc-double" class="nav-link" data-scroll-target="#double"><span class="header-section-number">9.1</span> double()</a></li>
+  <li><a href="#as.double" id="toc-as.double" class="nav-link" data-scroll-target="#as.double"><span class="header-section-number">9.2</span> as.double()</a></li>
+  <li><a href="#is.double" id="toc-is.double" class="nav-link" data-scroll-target="#is.double"><span class="header-section-number">9.3</span> is.double()</a></li>
+  <li><a href="#single" id="toc-single" class="nav-link" data-scroll-target="#single"><span class="header-section-number">9.4</span> single()</a></li>
+  <li><a href="#as.single" id="toc-as.single" class="nav-link" data-scroll-target="#as.single"><span class="header-section-number">9.5</span> as.single()</a></li>
+  </ul></li>
+  <li><a href="#traduccion" id="toc-traduccion" class="nav-link" data-scroll-target="#traduccion"><span class="header-section-number">10</span> Sobre esta traducción</a></li>
+  <li><a href="#referencias" id="toc-referencias" class="nav-link" data-scroll-target="#referencias"><span class="header-section-number">11</span> Referencias</a></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Otros formatos</h2><ul><li><a href="double.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+</div>
+<main class="content" id="quarto-document-content">
+
+
+
+<section id="desc" class="level2 title" data-number="1">
+<h2 class="title anchored" data-number="1" data-anchor-id="desc"><span class="header-section-number">1</span> Descripción</h2>
+<p>La función <code>double()</code> creará un vector de tipo <em>doble</em> (<code>"double"</code>) que podrá almacenar y representar un subconjunto muy amplio de los números reales con una exactitud máxima de hasta 15 dígitos.</p>
+<p>La función <code>as.double()</code> intentará convertir en un vector de tipo <em>doble</em> a cualquier tipo de objeto. Por su parte, la función <code>is.double()</code> verificará si un objeto es de tipo <em>doble</em>.</p>
+<p>La función <code>single()</code> creará un vector de tipo <em>doble</em> para almacenamiento y representación de números reales, pero añadirá un atributo (<code>"Csingle"</code>) que permitirá identificar al vector como uno de tipo <em>simple</em> a nivel interno del código de <strong>R</strong>. Para más información, puedes ver más adelante la sección <em>Valor devuelto</em>.</p>
+<p>La función <code>as.single()</code> intentará coaccionar cualquier objeto hacia un vector de tipo <em>doble</em> y también añadirá un atributo (<code>"Csingle"</code>) que permitirá identificar al vector como uno de tipo simple a nivel interno del código de <strong>R</strong>.</p>
+<p>La función <a href="numeric"><code>numeric()</code></a> es idéntica a la función <code>double()</code> y la función <a href="numeric"><code>as.numeric()</code></a> es idéntica a <code>as.double()</code>. La función <a href="numeric"><code>is.numeric()</code></a> comprobará si un vector es de <a href="typeof%20%7Bbase%7D" title="typeof {base}">tipo</a> <em>doble</em> (<code>"double")</code> o de tipo <a href="integer">entero</a> (<code>"integer")</code>. Estas funciones existen como una denominación más general para identificar a los números reales en <strong>R</strong>. Para mayor información, puedes consultar más adelante la sección <em>Detalles</em>.</p>
+<p>La función <a href="c%20%7Bbase%7D" title="c {base}"><code>c()</code></a> creará un vector <em>doble</em> si se utiliza para combinar valores reales que estén separados por comas.</p>
+</section>
+<section id="forma-de-uso-o-sintaxis" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="forma-de-uso-o-sintaxis"><span class="header-section-number">2</span> Forma de uso o sintaxis</h2>
+<div class="sourceCode" id="cb1" data-eval="FALSE"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">double</span>(<span class="at">length =</span> <span class="dv">0</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">as.double</span>(x, ...)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">is.double</span>(x)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">single</span>(<span class="at">length =</span> <span class="dv">0</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">as.single</span>(x, ...)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">numeric</span>(<span class="at">length =</span> <span class="dv">0</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">as.numeric</span>(x, ...)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="fu">is.numeric</span>(x)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="argumentos" class="level2 title" data-number="3">
+<h2 class="title anchored" data-number="3" data-anchor-id="argumentos"><span class="header-section-number">3</span> Argumentos</h2>
+<div id="tbl-args" class="anchored">
+<table class="table">
+<caption>Tabla&nbsp;1: Argumentos para las funciones de creación y verificación de vectores <em>dobles.</em></caption>
+<colgroup>
+<col style="width: 4%">
+<col style="width: 10%">
+<col style="width: 84%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Argumento</th>
+<th>Valor esperado</th>
+<th>Propósito</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><p><code>length=</code></p>
+<p><sub><em>longitud</em></sub></p></td>
+<td>Un valor entero mayor o igual a cero</td>
+<td>Determina la longitud deseada del vector, es decir, el número de elementos que almacenará. El argumento de longitud aceptará números enteros no negativos. Los valores continuos o con decimales (tipo <em>doble</em>) serán convertidos a enteros y la aportación de más de un valor devolverá un mensaje de error.</td>
+</tr>
+<tr class="even">
+<td><code>x=</code></td>
+<td>Un objeto</td>
+<td>Un objeto para ser coaccionado o verificado como vector de tipo <em>doble</em>.</td>
+</tr>
+<tr class="odd">
+<td><code>...</code></td>
+<td>Otros argumentos</td>
+<td>Otros argumentos que serán pasados desde o hacia otras funciones.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="detalles" class="level2 subtitle" data-number="4">
+<h2 class="subtitle anchored" data-number="4" data-anchor-id="detalles"><span class="header-section-number">4</span> Detalles</h2>
+<section id="funciones-crear" class="level3 subtitle" data-number="4.1">
+<h3 class="subtitle anchored" data-number="4.1" data-anchor-id="funciones-crear"><span class="header-section-number">4.1</span> Funciones para crear vectores <em>dobles</em></h3>
+<p>Las funciones básicas para crear vectores <em>dobles</em> son <code>double()</code>, <code>as.double()</code>, <a href="numeric"><code>numeric()</code></a>, <a href="numeric"><code>as.numeric()</code></a> y <a href="c%20%7Bbase%7D" title="c {base}"><code>c()</code></a><em>.</em> Éstas son descritas a continuación<em>.</em></p>
+<p><code>double()</code> creará un vector <em>doble</em> con el número de elementos especificado en el argumento de longitud, <code>length=</code>. Al momento de su creación, cada elemento del vector será igual a cero (<code>0</code>). Enseguida, se podrán <a href="assignOps%20%7Bbase%7D" title="assignOps {base}">asignar</a> valores reales positivos o negativos, así como <a href="NA%20%7Bbase%7D" title="NA {base}">valores no disponibles</a> (<code>NA</code> o <code>NA_real_</code>), al vector recientemente creado.</p>
+<p>La función <a href="#0"><code>numeric()</code></a> es idéntica, en propósito e internamente, a la función <code>double()</code>. Existe como una denominación genérica para referirse a la función de creación de vectores <em>dobles</em>.</p>
+<p><code>as.double()</code> intentará convertir al objeto referido en el argumento <code>x=</code> a un vector de tipo <em>doble</em> y, en caso de tener éxito, devolverá al objeto como un vector de este tipo (<code>"double"</code>). Si la coacción no ha sido exitosa, el resultado será un mensaje de error o un valor no disponible (<code>NA</code>) por cada elemento no coaccionado.</p>
+<p>La función <a href="as.numeric"><code>as.numeric()</code></a> es idéntica, en propósito e internamente, a la función <code>as.double()</code>. Existe como una denominación genérica para referirse a la función de conversión de vectores <em>dobles</em>.</p>
+<p><a href="c%20%7Bbase%7D" title="c {base}"><code>c()</code></a> creará un vector <em>doble</em> si se utiliza para combinar valores reales que estén separados por comas, por ejemplo: <code>c(1.414214, 2.718282, 3.141593)</code>. La combinación de elementos con valores reales creará un vector de tipo <em>doble</em>. Para mayor información sobre la combinación de elementos para crear vectores de un determinado tipo puedes ver la página de ayuda de la función <a href="c%20%7Bbase%7D" title="c {base}"><code>c()</code></a>.</p>
+<p>En particular, las funciones <code>as.double()</code>, <a href="numeric"><code>as.numeric()</code></a> y <a href="c"><code>c()</code></a> son de tipo <a href="Primitive" title="Primitive {base}">primitivo</a>, por lo que su código fuente está implementado de manera interna y no será visible directamente por la usuaria.</p>
+<p>La función <code>single()</code> creará un vector de tipo <em>doble</em> para almacenamiento y representación de números reales, con el atributo <code>"Csingle"</code>, que permitirá identificar al vector como uno de tipo <em>simple</em> a nivel interno del código de <strong>R</strong>.</p>
+<p>La función <code>as.single()</code> intentará convertir cualquier objeto hacia un vector de tipo <em>doble</em> y añadirá el atributo <code>"Csingle"</code> que permitirá identificar al vector como uno de tipo <em>simple</em> a nivel interno del código de <strong>R</strong>.</p>
+<p>El atributo <code>"Csingle"</code> será utilizado solamente en en la interfaz interna de <strong>R</strong> con los lenguajes de programación <a href="C">C</a> y <a href="Fortran">Fortran</a> para indicar que los objetos creados deberán ser interpretados como vectores de precisión simple. <strong>R</strong> no cuenta con el tipo de datos de precisión simple, por lo tanto, todos los números reales serán almacenados con el tipo de precisión doble.</p>
+<p>Los vectores <em>dobles</em> podrán almacenar números reales en cada elemento con una precisión de quince cifras significativas exactas en el intervalo aproximado de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo><mn>1.79</mn><mo>×</mo><msup><mn>10</mn><mn>308</mn></msup></mrow><annotation encoding="application/x-tex">\pm1.79×10^{308}</annotation></semantics></math>. Los vectores <em>simples</em> pueden almacenar números reales con una precisión de siete cifras significativas exactas en el intervalo aproximado de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo><mn>3.4</mn><mo>×</mo><msup><mn>10</mn><mn>38</mn></msup></mrow><annotation encoding="application/x-tex">\pm3.4×10^{38}</annotation></semantics></math>. Para más información sobre la utilización de estas funciones, puedes consultar más adelante la sección <em>Valor devuelto</em>.</p>
+</section>
+<section id="funciones-verificar" class="level3 subtitle" data-number="4.2">
+<h3 class="subtitle anchored" data-number="4.2" data-anchor-id="funciones-verificar"><span class="header-section-number">4.2</span> Funciones básicas para verificar vectores <em>dobles</em></h3>
+<p>Por su parte, la función <code>is.double()</code> se utilizará para verificar si un vector es de <a href="typeof%20%7Bbase%7D" title="typeof {base}">tipo</a> <em>doble</em> (<code>"double")</code>. En particular, <code>is.double()</code> es una función <a href="Primitive%20%7Bbase%7D" title="Primitive {base}">primitiva</a>, por lo que su código fuente está implementado de manera interna y no será visible directamente por la usuaria.</p>
+<p>La función <a href="numeric"><code>is.numeric()</code></a> comprobará si un vector es de <a href="typeof%20%7Bbase%7D" title="typeof {base}">tipo</a> <em>doble</em> (<code>"double")</code> o de tipo <a href="integer">entero</a> (<code>"integer")</code>. Por lo tanto, no es exclusiva para los vectores <em>dobles</em> sino para los objetos de <a href="mode">modo</a> <a href="numeric">numérico</a>.</p>
+<p>Para más información sobre la utilización de estas funciones, puedes consultar más adelante la sección <em>Valor devuelto</em>.</p>
+</section>
+<section id="detalles-def" class="level3 subtitle" data-number="4.3">
+<h3 class="subtitle anchored" data-number="4.3" data-anchor-id="detalles-def"><span class="header-section-number">4.3</span> Definición de los vectores <em>dobles</em></h3>
+<p>Un vector <em>doble</em> es una estructura <em>atómica</em> o fundamental de <strong>R</strong> destinada al almacenamiento exclusivo de datos de tipo <em>doble</em> en celdas contiguas, así como a la realización de operaciones individuales o en paralelo con los elementos de estas celdas <span class="citation" data-cites="becker1998">(<a href="#ref-becker1998" role="doc-biblioref">Becker, Chambers, y Wilks 1998</a>)</span>. Los datos de tipo <em>doble</em> consisten en un formato de almacenamiento y representación de números reales basado en la aritmética binaria de <em>punto flotante</em>. Particularmente, los vectores <em>dobles</em> son el único tipo de objeto en <strong>R</strong> que permite guardar, mostrar y realizar operaciones aritméticas con números reales.</p>
+<p>La aritmética binaria de punto flotante es el sistema interno más extendido entre las computadoras actuales para aproximarse a la aritmética decimal de los números reales. Básicamente, es un tipo de almacenamiento numérico, similar a la notación científica, pero con precisión y exactitud limitadas, que posibilita la representación en pantalla de un conjunto de números continuos —los reales— con los elementos de un conjunto de números discretos —los dígitos de la máquina o <em>bits</em>— <span class="citation" data-cites="muller2018">(<a href="#ref-muller2018" role="doc-biblioref">Muller et&nbsp;al. 2018, 3</a>)</span>. El almacenamiento binario de valores continuos a partir de un número de <em>bits</em> discreto implica, además, que sólo algunos números reales podrán ser representados de forma exacta <span class="citation" data-cites="borgwardt2010">(<a href="#ref-borgwardt2010" role="doc-biblioref">Borgwardt 2010</a>)</span>.</p>
+<p>Así, cuando exista una cifra que el formato no pueda almacenar exactamente, ésta será redondeada en pantalla a un número de cifras predeterminado. Esto conlleva, a su vez, que los números reales representados podrán tener un valor interno marginalmente diferente al que aparece en la pantalla. La diferencia entre el valor almacenado de algunas cantidades y su valor representado es uno de los rasgos característicos de la aritmética de punto flotante <span class="citation" data-cites="goldberg1991">(<a href="#ref-goldberg1991" role="doc-biblioref">Goldberg 1991</a>)</span>.</p>
+<p>Específicamente, <strong>R</strong> define al tipo de datos <em>doble</em> como un formato de almacenamiento que utiliza la aritmética binaria de <em>punto flotante</em> con un tamaño de memoria de ocho <em>bytes</em> para representar, externamente, a un subconjunto amplio de los números reales del sistema de numeración decimal, con signo y punto decimal. Esto equivale a la posibilidad de representar magnitudes reales en el intervalo que va, aproximadamente, de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>1.79</mn><mo>×</mo><msup><mn>10</mn><mn>308</mn></msup></mrow><annotation encoding="application/x-tex">-1.79 \times 10^{308}</annotation></semantics></math> a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1.79</mn><mo>×</mo><msup><mn>10</mn><mn>308</mn></msup></mrow><annotation encoding="application/x-tex">1.79 \times 10^{308}</annotation></semantics></math>.</p>
+<p>El primer tamaño de memoria estandarizado para guardar números reales en formato de punto flotante fue de 32 <em>bits</em> y se le conoció originalmente como <em>precisión simple</em> en el estándar IEEE-754-1985 del Instituto de Ingenieros Eléctricos y Electrónicos de Estados Unidos (IEEE por sus siglas en inglés). El siguiente rango de almacenamiento para números reales fue definido por el estándar como de 64 <em>bits</em>, por lo que se denominó como <em>precisión doble</em>. En la actualidad, el estándar IEEE-754-2008 utiliza la denominación <em>binaria32</em> (<em>binary32</em>) para la precisión simple, y <em>binaria64</em> (<em>binary64</em>) para la precisión doble.</p>
+<p>A su vez, la mayoría de las plataformas de sistema en las que se implementa <strong>R</strong> están basadas en el estándar internacional ISO/IEC-60559-2011 de la Comisión Internacional de Electrotecnia de la Organización Internacional para la Estandardización (ISO, por sus siglas en inglés), equivalente al estándar IEEE-754-2008. De acuerdo con ambos estándares, los valores de precisión doble usarán 64 dígitos binarios para almacenamiento interno y hasta 22 dígitos decimales para la representación externa de los números reales. Además, dicho documento también contempla el almacenamiento y representación de valores especiales para las operaciones matemáticas no definidas (<code>NaN</code>), los valores menos y más infinito (<code>-Inf</code>, <code>Inf</code>) y los valores menos y más cero (<code>-0</code>, <code>+0</code>). Estos últimos son simplemente equivalentes al cero (<code>0</code>).</p>
+<p>En particular, los bits de almacenamiento se distribuyen de la siguiente manera: un bit corresponderá al signo del significante, once bits corresponden al exponente de la base, y los cincuenta y dos bits restantes almacenarán al significante. Para más información sobre estos conceptos, puedes consultar más adelante la sección <em>El almacenamiento de números reales</em>. Por su parte, los dígitos de representación usarán hasta quince dígitos para desplegar en pantalla números reales de manera exacta, y hasta veintidós dígitos para desplegar números reales de manera aproximada. Esto significa que, después del dígito quince, la precisión de una cifra representada aumentará sólo con una reducción o costo en su exactitud. Para más información, puedes consultar más adelante la sección <em>El despliegue en pantalla de valores dobles</em>.</p>
+<p>En un sentido práctico, la <em>precisión</em> alude al número de dígitos significativos de una cifra (es decir, los órdenes de magnitud: centenas, decenas, … , décimas, centécimas, etc.) que podrán ser desplegados en pantalla, independientemente de su exactitud. Por otra parte, la <em>exactitud</em> se refiere a la equivalencia entre el valor almacenado y el representado en la pantalla. Para una definición más específica, puedes consultar más adelante la sección <em>El almacenamiento de números reales</em>.</p>
+<p>En las computadoras modernas, la aritmética de punto flotante está implementada directamente desde la maquinaria del equipo, en el coprocesador matemático o Unidad de Punto Flotante (FPU, por sus siglas en inglés). Por lo tanto, en última instancia, el manejo de los números de precisión doble dependerá de las características del procesador (CPU, por sus siglas en inglés), el coprocesador y el compilador de la computadora donde se instale <strong>R</strong>. Sin embargo, es muy probable que el equipo siga lo establecido por el estándar ISO/IEC-60559-2011. Para más información sobre los límites del almacenamiento numérico en tu plataforma de sistema puedes ver la página de ayuda sobre las <a href=".Machine">características numéricas del equipo</a>.</p>
+</section>
+<section id="detalles-despliegue" class="level3 subtitle" data-number="4.4">
+<h3 class="subtitle anchored" data-number="4.4" data-anchor-id="detalles-despliegue"><span class="header-section-number">4.4</span> El despliegue en pantalla de los valores <em>dobles</em></h3>
+<p>Las cifras en formato <em>doble</em> aparecerán en pantalla en notación fija del sistema de numeración decimal. De manera predeterminada, <strong>R</strong> desplegará hasta siete dígitos para cualquier valor numérico. Si la cifra incluye fracciones decimales, entonces el punto decimal ocupará uno de estos dígitos. Cuando la usuaria desee desplegar más dígitos en la pantalla, deberá especificarlo con el argumento <code>digits=</code> de la función <a href="options"><code>options()</code></a>. No obstante, debido a los límites de la precisión doble, el número máximo de dígitos desplegables será de veintidós, de los cuales sólo los primeros quince dígitos podrán representar siempre valores exactos. En consecuencia, a partir del dígito dieciséis algunos valores podrán estar representados de forma aproximada.</p>
+<div class="callout callout-style-simple callout-caution no-icon">
+<div class="callout-body d-flex">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-body-container">
+<p>Debido a estas características, la comparación de igualdad para dos números que en pantalla sean desplegados de manera idéntica podría devolver un <a href="logical">valor lógico</a> falso (<code>FALSE</code>), pues el resto de decimales ocultos será diferente. A menudo, este nivel de precisión no es relevante. Por ello, para realizar comprobaciones lógicas sobre la igualdad de valores reales puedes utilizar preferentemente la función <a href="#0"><code>all.equal()</code></a>, la cual comprobará la igualdad de los valores hasta un nivel de exactitud más práctico.</p>
+</div>
+</div>
+</div>
+<p>Por otra parte, los límites de la representación de los números reales en <strong>R</strong> ( <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo><mn>1.79</mn><mo>×</mo><msup><mn>10</mn><mn>308</mn></msup></mrow><annotation encoding="application/x-tex">\pm1.79 \times 10^{308}</annotation></semantics></math>) comprenden cifras mucho más precisas que el despliegue de quince cifras significativas exactas y veintidós aproximadas. Por ello, cuando un número tenga más de veintidós digitos pero se encuentre dentro de los límites numéricos del almacenamiento <em>doble</em>, <strong>R</strong> desplegará en pantalla una forma abreviada de la notación científica, llamada <em>notación científica E</em>.</p>
+<p>La notación científica E desplegará las cifras en pantalla en el formato <code>Me±N</code> para denotar “un número <em>M</em> multiplicado por la base 10 elevada a la potencia <em>N</em>”, en donde el número que sigue a la letra <code>e</code> representa el exponente al que se elevará la base 10. En cambio, en notación científica tradicional la notación E sería escrita como: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mo>×</mo><msup><mn>10</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">m \times 10^{n}</annotation></semantics></math>, donde <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math> es un número decimal positivo o negativo con separador fraccionario (el punto o la coma decimal) y <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> es un valor entero positivo o negativo.</p>
+<p>Ya que las potencias con superíndices (de la forma <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>x</mi><mi>n</mi></msup><annotation encoding="application/x-tex">x^n</annotation></semantics></math>) no pueden mostrarse en la consola de <strong>R</strong>, la notación científica E (<code>Me±N</code>) permite calcular la elevación de potencias de base 10 en forma práctica. De esta manera, <strong>R</strong> consigue representar números con más de quince cifras significativas de forma exacta siempre que se encuentren dentro de los límites del almacenamiento <em>doble</em>. No obstante, cuando los valores sean demasiado grandes o demasiado pequeños para ser representados adecuadamente, incluso con la notación científica E, los valores se desbordarán al infinito (<code>±Inf</code>) o serán absorbidos al cero (<code>0.0</code>). En el primer caso, los vectores <em>dobles</em> representarán al infinito positivo con los literales <code>+Inf</code> o <code>Inf</code> y al infinito negativo con los caracteres <code>-Inf</code>.</p>
+<p>Si deseas trabajar con números con más de quince cifras significativas exactas en notación decimal fija (es decir, sin notación científica) o, incluso, realizar cálculos con tipos exactos, es recomendable el uso de paquetes especializados. Por ejemplo, el paquete <strong>{<code>Rmpfr</code>}</strong> permite realizar operaciones aritméticas con números de precisión decimal arbitraria y sin error de redondeo. Con todo, pocos campos de la ciencia necesitan precisiones mayores a este umbral, por lo que un gran número de aplicaciones estadísticas podrán realizarse apropiadamente tan solo con la <em>precisión doble</em> <span class="citation" data-cites="muller2018">(<a href="#ref-muller2018" role="doc-biblioref">Muller et&nbsp;al. 2018, 3</a>)</span>.</p>
+<p>Para cada tipo de vector atómico, salvo para los <a href="raw">vectores crudos</a> (<code>"raw"</code>), existe un tipo propio de valor no disponible, representado en pantalla por los caracteres <code>NA</code> (del inglés <em>Not Available</em> o No Disponible). Así, al tipo <em>doble</em> le corresponderá, a nivel interno, el valor no disponible <code>NA_real_</code>. Si deseas asegurarte de que los vectores <em>dobles</em> reciban solamente valores no disponibles de tipo <em>doble</em>, puedes utilizar directamente el literal <code>NA_real_</code> (en vez de la forma más simple <code>NA</code>) en las operaciones de asignación de la consola o del código fuente. Para mayor información puedes consultar más adelante la sección <em>Ejemplos</em>, así como la página de ayuda de los <a href="NA">valores no disponibles</a>.</p>
+<p>Por otro lado, si se realizan operaciones matemáticas no definidas —como la división de cero entre cero o la resta de infinitos— <strong>R</strong> desplegará un valor no disponible especial representado en pantalla como <code>NaN</code>, cuyos caracteres significan <em>Valor No Numérico</em> (del inglés <em>Not a Number</em>).</p>
+</section>
+<section id="objetos" class="level3 subtitle" data-number="4.5">
+<h3 class="subtitle anchored" data-number="4.5" data-anchor-id="objetos"><span class="header-section-number">4.5</span> Características de los vectores dobles como objetos</h3>
+<p>Los vectores <em>dobles</em> (<code>"double"</code>), como todos los vectores atómicos, no podrán contener elementos que no sean del mismo tipo. No obstante, los vectores de tipo <em>doble</em> sí pueden almacenar valores enteros en forma exacta más allá del rango de almacenamiento del <a href="integer">tipo entero</a> (<code>"integer"</code>), el cual va, aproximadamente, de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo><mn>2</mn><mo>×</mo><msup><mn>10</mn><mn>9</mn></msup></mrow><annotation encoding="application/x-tex">\pm2\times10^9</annotation></semantics></math>.</p>
+<p><strong>R</strong> cuenta con dos nombres para referirse a los vectores que almacenan números reales: <code>"double"</code> y <code>"numeric"</code>, lo que responde a una inercia histórica. En las primeras versiones de <strong>R</strong> también se usaba el tipo <code>"real"</code> para referirse a estos vectores, pero <a href="defunct">desapareció</a> a partir de la versión 3.0.0. Para evitar confusiones, es conveniente distinguir entre el <a href="#0"><em>tipo</em></a> y el <a href="mode"><em>modo</em></a> de almacenamiento, así como entre las <a href="class"><em>clases</em></a> de objetos que existen en <strong>R</strong>.</p>
+<p>El formato de los datos que puede almacenar un vector atómico está definido por el <a href="typeof">tipo de almacenamiento</a>. Especialmente, <strong>R</strong> cuenta con tres tipos de almacenamiento numérico: el <a href="integer">tipo <em>entero</em></a>, el tipo <em>doble</em> y el <a href="complex">tipo <em>complejo</em></a>. Mientras que el tipo de almacenamiento es una clasificación excluyente, el <a href="mode">modo de almacenamiento</a> es una clasificación genérica. Ello permite agrupar a algunos tipos de almacenamiento con características similares en una sola categoría. Por ejemplo, los vectores <em>dobles</em> y los <em>enteros</em> comparten en común el modo de almacenamiento <em>numérico</em> (<code>"numeric"</code>), de forma que será posible identificarlos como objetos similares para algunas tareas en común.</p>
+<p>Además de poseer un tipo y un modo de almacenamiento, los vectores son esencialmente entidades abstractas que poseen atributos, o, simplemente, objetos del lenguaje. Uno de los atributos más importantes de cualquier objeto es su <a href="class">clase</a>, la cual determina los métodos y funciones que podrán aplicársele. En este sentido, todos los tipos numéricos de <strong>R</strong> poseen una clase propia que define las operaciones matemáticas y estadísticas que les corresponden.</p>
+<p>Así, el <a href="integer">tipo <em>entero</em></a> (<code>"integer"</code>) pertenece a la <a href="integer-class">clase <em>entero</em></a> (<code>"integer"</code>), el tipo <em>doble</em> (<code>"double"</code>) pertenece a la <a href="BasicClasses-methods">clase <em>numérico</em></a> (<code>"numeric"</code>), y el <a href="complex">tipo <em>complejo</em></a> (<code>"complex"</code>) pertenece a la <a href="BasicClasses-methods">clase complejo</a> (<code>"complex"</code>). Los objetos de la clase <em>entero</em> admiten las operaciones aritméticas y estadísticas básicas. Los objetos de la clase <em>numérico</em> admiten todas las operaciones aritméticas y estadísticas aplicables a la clase <em>entero</em>, y, además, permiten todas las operaciones aritméticas y estadísticas para los números reales. Finalmente, los objetos de la la clase <em>complejo</em> admiten las operaciones que se pueden realizar con la clase <em>entero</em> y <em>numérico</em>, pero también las operaciones aritméticas propias de los números complejos.</p>
+<p>Si se realiza una operación en común entre objetos numéricos de diferente clase, <strong>R</strong> coaccionará a los objetos involucrados a la clase que admita más operaciones, y promoverá el tipo de almacenamiento del vector conforme a la clase correspondiente. Es decir, si se realiza una operación matemática entre un vector <em>entero</em> y uno <em>doble</em>, el resultado será un vector de tipo <em>doble</em>. Y si se realiza una operación entre vectores <em>enteros</em>, <em>dobles</em> y <em>complejos</em>, el resultado será un vector de tipo <em>complejo</em>.</p>
+</section>
+</section>
+<section id="valor" class="level2 title" data-number="5">
+<h2 class="title anchored" data-number="5" data-anchor-id="valor"><span class="header-section-number">5</span> Valor devuelto</h2>
+<p>Cualquier número tecleado sin comillas ( <code>""</code> ) en la consola de <strong>R</strong> será devuelto como un valor de tipo <em>doble</em> por el lenguaje. Es decir, <strong>R</strong> podrá identificar <em>literales</em> o <a href="constants">constantes numéricas</a> en el código fuente y las devolverá como valores numéricos de tipo <em>doble</em>.</p>
+<p><strong>R</strong> reconocerá <a href="Constants">constantes numéricas</a> en el sistema de numeración decimal y hexadecimal. Los valores en base decimal se escribirán tal cual, mientras que los valores en base hexadecimal deberán estar acompañados del prefijo <code>0x</code> o <code>0X</code> para indicar que se trata de cifras en este sistema de numeración. Por ejemplo, la cifra <code>0x10</code> devolverá el valor <em>doble</em> <code>16</code> a partir de la representación hexadecimal ingresada. Por otro lado, la cifra en notación científica E <code>1e+3</code> (o también <code>1e3</code>) devolverá el valor doble <code>1000</code> y será equivalente a haber ingresado el literal numérico <code>1000</code>.</p>
+<p>El acceso a los elementos de las celdas de un vector <em>doble</em> se realizará por medio de las operaciones de <a href="Extract%20%7Bbase%7D" title="Extract {base}">indización</a>, caracterizadas por la concatenación del nombre del objecto y un par de corchetes ( <code>[ ]</code> ), que contendrán el número o números índice de elementos a extraer, tal como, por ejemplo: <code>un_vector[i]</code>; en donde <code>i</code> será el número índice del elemento que se desee <a href="Extract%20%7Bbase%7D">extraer</a> o <a href="assign%20%7Bbase%7D" title="assign {base}">almacenar</a>. Para almacenar valores dentro del vector deberá usarse la indización con el operador de asignación ( <code>&lt;-</code> ). Por ejemplo, la expresión: <code>un_vector[2] &lt;- 3.14159</code> asignará a la segunda celda del objeto <code>un_vector</code> el valor real 3.14159.</p>
+<p>La función <code>double()</code> creará un vector <em>doble</em> con el número de elementos especificado en el argumento de longitud, <code>length=</code>. Al momento de su creación, cada elemento del vector será igual a cero (<code>0</code>). Luego, se podrán <a href="assignOps%20%7Bbase%7D" title="assignOps {base}">asignar</a> valores reales positivos o negativos, así como <a href="NA%20%7Bbase%7D" title="NA {base}">valores no disponibles</a> (<code>NA_real_</code>), al vector recientemente creado.</p>
+<p>La función <code>as.double()</code> intentará coaccionar los elementos del objeto referido en el argumento <code>x=</code> al tipo <em>doble</em> y, en caso de tener éxito, devolverá al objeto como un vector de este tipo (<code>"double"</code>). Si la coacción no ha sido exitosa, el resultado será un valor no disponible (<code>NA</code>).</p>
+<p>Las cadenas de caracteres que contengan representaciones de números del sistema decimal o hexadecimal (las cuales comenzarán con <code>0x</code> o <code>0X</code>) entre espacios en blanco se podrán coaccionar a valores <em>dobles</em>. No obstante, cada cadena de caracteres deberá contener una sola representación numérica sin espacios intercalados. De lo contrario, esos elementos serán coaccionados como valores no disponibles (<code>NA</code>).</p>
+<p>Además, las cadenas de caracteres que contengan el nombre de valores numéricos especiales de <strong>R</strong> como, por ejemplo, <code>"NA"</code>, <code>"NaN"</code>, <code>"Inf"</code> e, incluso, <code>"infinity"</code>, serán convertidas a sus respectivos valores especiales.</p>
+<p><code>as.double()</code> eliminará los atributos, incluidos los nombres, de los objetos coaccionados, tal como lo hace la función <a href="vector%20%7Bbase%7D" title="vector {base}"><code>as.vector()</code></a>. Para asegurarte que después de la coacción un objeto <em><code>x</code></em> permanezca con el tipo <em>doble</em> sin perder sus atributos originales, deberás asignar al objeto la etiqueta del tipo <em>doble</em> (<code>"double"</code>) con la función <a href="typeof"><code>storage.mode()</code></a>. Por ejemplo, como en: <code>storage.mode(x) &lt;- "double"</code>. Esta forma de coacción hacia el tipo <em>doble</em> tiene la ventaja de modificar el <a href="mode%20%7Bbase%7D" title="mode {base}">tipo de almacenamiento</a> sin eliminar los atributos del objeto.</p>
+<p>La función <code>as.double()</code> aplicada a <a href="factor">factores</a> devolverá los códigos numéricos detrás de los niveles o etiquetas del factor. Sin embargo, cuando las etiquetas del factor sean ellas mismas valores numéricos y la usuaria desee preservar el valor numérico de las etiquetas al convertir los elementos del factor al tipo <em>doble</em>, se deberá, entonces, extraer primero los valores numéricos de las etiquetas en forma de <a href="character"><em>carácter</em></a> y, luego, convertirlos al formato <em>doble</em>. Para más información, puedes ver más adelante la sección <em>Ejemplos</em> así como la página de ayuda de la función <a href="factor"><code>factor()</code></a>.</p>
+<p>Cuando se intente coaccionar un valor al tipo <em>doble</em>, o se ingrese un literal numérico en la consola, y éste sea mayor o menor a los límites del intervalo de almacenamiento, <strong>R</strong> devolverá el valor infinito positivo (<code>+Inf</code>, <code>Inf</code>) o negativo (-<code>Inf</code>) dependiendo del signo del literal ingresado.</p>
+<p>La función <a href="c%20%7Bbase%7D" title="c {base}"><code>c()</code></a> devolverá un vector <em>doble</em> si se utiliza para combinar valores reales que estén separados por comas, por ejemplo: <code>c(1.414214, 2.718282, 3.141593)</code>. El resultado de la combinación de elementos reales creará un vector de tipo <em>doble</em>. Para mayor información sobre la combinación de elementos para crear vectores de un determinado tipo puedes ver la página de ayuda de la función <a href="c%20%7Bbase%7D" title="c {base}"><code>c()</code></a>.</p>
+<p>La función <code>is.double()</code> devolverá el <a href="logical%20%7Bbase%7D" title="logical {base}">valor lógico</a> verdadero (<code>TRUE</code>) o falso (<code>FALSE</code>) dependiendo de si el objeto referido en el argumento <code>x=</code> es de tipo <em>doble</em>, es decir, de si el vector tiene asociada internamente la etiqueta <code>"double"</code>. En el caso de los <a href="base%20%7Bfactor%7D" title="base {factor}">factores</a>, que asocian números enteros a valores categóricos, <code>is.double()</code> devolverá el valor lógico falso (<code>FALSE</code>) al momento de verificar el tipo del objeto.</p>
+<p>La función <a href="numeric"><code>numeric()</code></a> es idéntica, internamente, a la función <code>double()</code>. Así, <code>numeric()</code> devolverá un vector de precisión doble con el número de elementos especificados en el argumento de longitud, <code>length=</code>. Los elementos del vector creado serán todos iguales a cero (<code>0</code>).</p>
+<p>La función <a href="numeric"><code>as.numeric()</code></a> intentará coaccionar al objeto referido en el argumento <code>x=</code> para convertir sus elementos al tipo <em>doble</em> y, en caso de tener éxito, devolverá al objeto como un vector de este tipo (<code>"double"</code>).</p>
+<p>La función <a href="numeric"><code>is.numeric()</code></a> devolverá el <a href="logical">valor lógico</a> verdadero (<code>TRUE</code>) si el objeto especificado en su argumento <code>x=</code> se trata de un vector <em>entero</em> o de uno <em>doble</em>, pues verificará el modo de almacenamiento genérico del objeto, mientras que <code>as.numeric()</code> transformará, de tener éxito, los valores de un objeto a números reales y asignará el tipo de almacenamiento <code>"double"</code> al objeto coaccionado.</p>
+</section>
+<section id="almacenamiento" class="level2 title" data-number="6">
+<h2 class="title anchored" data-number="6" data-anchor-id="almacenamiento"><span class="header-section-number">6</span> El almacenamiento de números reales</h2>
+<p>El tipo de almacenamiento es una categorización de un conjunto de valores que comparten propiedades similares, y de un conjunto de operaciones definidas para esos valores. Así, un tipo de almacenamiento se caracteriza por un conjunto de objetos con la misma representación. En el caso de los números reales (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>) existen diversos tipos de datos que permiten representarlos, así como realizar operaciones matemáticas con ellos. Algunos nombres de estos tipos de datos son, por ejemplo: <em>single</em>, <em>float</em> o <em>double.</em></p>
+<p>En términos informales, los números reales son aquellos que se pueden representar con la marca de separación de enteros y fracciones, ya sea que la marca utilizada sea el punto ( <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>.</mi><annotation encoding="application/x-tex">.</annotation></semantics></math> ) o la coma ( <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>,</mo><annotation encoding="application/x-tex">,</annotation></semantics></math> ), y pueden ser números tanto positivos como negativos incluyendo al cero (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>). En términos matemáticos, los números reales se refieren al conjunto <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math> que comprende a los subconjuntos de los números racionales <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℚ</mi><annotation encoding="application/x-tex">\mathbb{Q}</annotation></semantics></math> (definidos como la razón de dos enteros <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mfrac><mi>a</mi><mi>b</mi></mfrac><annotation encoding="application/x-tex">\frac{a}{b}</annotation></semantics></math> donde <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>b</mi><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">b≠0</annotation></semantics></math>) y a los irracionales (no representables por la razón de dos números enteros).</p>
+<p>En particular, los números reales poseen al menos dos propiedades muy importantes: 1) su dominio es infinito e incontable (es decir, continuo), por lo que entre un número real y otro número real existe un número indeterminado de ellos; 2) algunos números reales tienen una precisión infinita, por lo que no pueden ser representados exactamente con la marca de separación de enteros y fracciones (usualmente, el punto decimal).</p>
+<p>Debido a estas propiedades, y a que las computadoras utilizan un número predeterminado de bits para almacenar números, las arquitecturas de sistema sólo pueden capturar un número finito de números reales con un nivel de precisión limitada. A la correspondencia entre patrones de bits y algunos números reales se le denomina <em>representación</em> <span class="citation" data-cites="geisler2019">(<a href="#ref-geisler2019" role="doc-biblioref">Geisler y Peguero 2019</a>)</span>. Dado el número limitado de bits, una representación realizará un sacrificio entre la cantidad de números representables y el nivel de precisión que estos puedan alcanzar.</p>
+<p>Aunque existen diferentes tipos de representaciones para trabajar con números reales —<em>de</em> <em>punto fijo</em>, <em>de</em> <em>punto flotante</em>, <em>posit</em>, <em>logarítimica</em>, etc.— la mayoría de las computadoras modernas utiliza el formato de <em>representación binaria de</em> <em>punto flotante</em>. De este modo, la variación en los nombres de los tipos de datos para números reales proviene, en la mayoría de lenguajes de programación, de variaciones en el grado de precisión de los números de punto flotante.</p>
+<p>En esencia, la aritmética binaria de punto o coma flotante (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝔽</mi><annotation encoding="application/x-tex">\mathbb{F}</annotation></semantics></math>) es una representación de la aritmética de los números reales (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ℝ</mi><annotation encoding="application/x-tex">\mathbb{R}</annotation></semantics></math>) basada en un formato de almacenamiento interno similar a la notación científica. Dicho formato consiste en la utilización de un número racional con precisión limitada, llamado <em>significante</em> (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>), multiplicado por una <em>base</em> fija (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>) elevada a un <em>exponente</em> (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>). En particular, la denominación <em>punto flotante</em> se deriva de dos elementos. Primero, del nombre de la marca de separación de enteros y fracciones del significante utilizada en los países anglosajones, la cual es el <em>punto</em> ( <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>.</mi><annotation encoding="application/x-tex">.</annotation></semantics></math> ). Y, segundo, de la posibilidad de que esta marca pueda situarse en cualquiera de los dígitos disponibles del significante.</p>
+<p>La representación de punto flotante fue diseñada para realizar cálculos científicos en diversas disciplinas. Por ello, además de definir un formato de almacenamiento y representación numérica, también define los procedimientos para realizar las operaciones aritméticas básicas (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>+</mo><annotation encoding="application/x-tex">+</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>−</mo><annotation encoding="application/x-tex">-</annotation></semantics></math> , <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>×</mo><annotation encoding="application/x-tex">\times</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mo>÷</mo><annotation encoding="application/x-tex">\div</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mrow></mrow></msqrt><annotation encoding="application/x-tex">\sqrt{}</annotation></semantics></math>) para los números reales, conceptualiza valores especiales como el infinito (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>∞</mi><annotation encoding="application/x-tex">\infty</annotation></semantics></math>) e, incluso, advierte de las operaciones matemáticas no definidas y que, por lo tanto, no devolverán ningún resultado (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>∄</mi><annotation encoding="application/x-tex">\nexists</annotation></semantics></math>).</p>
+<p>Si bien los cálculos científicos no necesitan de una precisión ilimitada, a menudo involucran la necesidad de trabajar simultáneamente con magnitudes muy grandes y muy pequeñas. Al destinar dígitos a la representación de casos con órdenes de magnitud muy distantes, los resultados corren el riesgo de ser imprecisos <span class="citation" data-cites="evans2023">(<a href="#ref-evans2023" role="doc-biblioref">Evans 2023</a>)</span>. Para resolver este dilema, el estándar ISO/IEC 60559-2020, que implementa la aritmética de punto flotante en la mayoría de las computadoras del mundo, prevé tres tipos de números en formato de punto flotante: los <em>normalizados</em>, los <em>subnormales</em> y los casos especiales.</p>
+<p>Los numeros <em>normalizados</em> podrán representarse exactamente dentro de los límites del almacenamiento numérico definidos por el estándar (por ejemplo: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo><mn>1.79</mn><mo>×</mo><msup><mn>10</mn><mn>308</mn></msup></mrow><annotation encoding="application/x-tex">\pm1.79 \times 10^{308}</annotation></semantics></math>) y serán almacenados internamente con un significante con un dígito igual a uno antes del punto (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>.</mi><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub><msub><mi>m</mi><mn>3</mn></msub><mi>.</mi><mi>.</mi><mi>.</mi><msub><mi>m</mi><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">1.m_{1}m_{2}m_{3}...m_{p-1}</annotation></semantics></math>). Por su parte, los números <em>subnormales</em> son aquellos con una magnitud menor a la del número normalizado más pequeño posible, conocido como el valor <em>épsilon de máquina</em> (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϵ</mi><mrow><mi>m</mi><mi>a</mi><mi>q</mi></mrow></msub><annotation encoding="application/x-tex">\epsilon_{maq}</annotation></semantics></math>)<em>,</em> y poseen un significante con un dígito igual a cero antes del punto (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mi>.</mi><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub><msub><mi>m</mi><mn>3</mn></msub><mi>.</mi><mi>.</mi><mi>.</mi><msub><mi>m</mi><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">0.m_{1}m_{2}m_{3}...m_{p-1}</annotation></semantics></math>)<em>.</em> Finalmente, los casos especiales se refieren a la representación de las operaciones matemáticas no definidas (<code>NaN</code>), así como al cero (<code>0</code>) y los infinitos (<code>±Inf</code>).</p>
+<p>Los números subnormales, al ser muy cercanos al cero, impiden la absorción abrupta del resultado de las operaciones aritméticas que involucren cifras con órdenes de magnitud muy distantes. Al considerar la existencia de números subnormales, la aritmética de punto flotante se asegura de que la pérdida de información entre los pasos intermedios de los cálculos, en especial de las sumas y restas, sea menor. Esta posibilidad es muy importante para la confiabilidad de las aplicaciones científicas de los ordenadores.</p>
+<p>En específico, un número en formato de punto flotante tiene cinco componentes: i) un signo <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math> el cual puede adoptar los valores de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math> o <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1</mn><annotation encoding="application/x-tex">1</annotation></semantics></math> para indicar un valor positivo o negativo, respectivamente; ii) una precisión binaria <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> mayor o igual a dos (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>≥</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">p≥2</annotation></semantics></math>) que consiste en el número de dígitos significativos del significante <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>; iii) un coeficiente o significante <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math> tal que sea mayor o igual a cero y menor a la magnitud de la base <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math> (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>m</mi><mo>&lt;</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">0 ≤ m &lt; \beta</annotation></semantics></math>) y que, además, cuente con al menos un dígito antes de la marca de separación de fracciones y <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">p-1</annotation></semantics></math> dígitos después de ésta; iv) una base fija <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math> igual a dos (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\beta = 2</annotation></semantics></math>); y v) un exponente <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math> dentro de un rango predefinido de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><annotation encoding="application/x-tex">e_{min}</annotation></semantics></math> a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><annotation encoding="application/x-tex">e_{max}</annotation></semantics></math> que atraviesa el cero (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo>&lt;</mo><mn>0</mn><mo>&lt;</mo><msub><mi>e</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow><annotation encoding="application/x-tex">e_{min} &lt; 0 &lt; e_{max}</annotation></semantics></math>). De esta manera, un número de punto flotante <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math> es uno para el cual existe al menos una representación exacta en función de los componentes <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>, <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math> y <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math> de la forma:</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>x</mi><mo>=</mo><msup><mrow><mo stretchy="true" form="prefix">(</mo><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mi>s</mi></msup><mo>⋅</mo><mi>m</mi><mo>⋅</mo><msup><mi>β</mi><mi>e</mi></msup></mrow><annotation encoding="application/x-tex">
+x = (-1)^{s} \cdot m \cdot \beta^e
+</annotation></semantics></math></p>
+<p>La importancia de la fórmula anterior radica en que, dados ciertos parámetros, no todos los números reales podrán ser representados exactamente como números de punto flotante, incluso si se encuentran dentro del rango de almacenamiento admitido por el estándar.<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> De acuerdo con estos parámetros, el estándar ISO/IEC 60559 requiere que un número de punto flotante tenga una base binaria (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>β</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\beta =2</annotation></semantics></math>) y que el exponente mínimo <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><annotation encoding="application/x-tex">e_{min}</annotation></semantics></math> sea igual al valor negativo del exponente máximo <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><annotation encoding="application/x-tex">e_{max}</annotation></semantics></math> más una unidad (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>e</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><mo>=</mo><mn>1</mn><mo>−</mo><msub><mi>e</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></mrow><annotation encoding="application/x-tex">e_{min} = 1 - e_{max}</annotation></semantics></math>). Del mismo modo, dependiendo de la precisión decimal deseada, el significante <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math> podrá estar compuesto de hasta 11, 24, 53 o 112 bits, correspondientes a los formatos de precisión <em>media</em> (<em>binaria16</em>), <em>simple</em> (<em>binaria32</em>), <em>doble</em> (<em>binaria64)</em> y <em>cuádruple</em> (<em>binaria128</em>). En la tabla 2 se puede observar la especificación de precisiones y exponentes correspondiente a cada formato.</p>
+<div id="tbl-params" class="anchored">
+<table class="table">
+<caption>Tabla&nbsp;2: Parámetros de los diversos formatos de almacenamiento binario de punto flotante de acuerdo al estándar ISO/IEC 60559.</caption>
+<colgroup>
+<col style="width: 24%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parámetro</th>
+<th>Precisión media</th>
+<th>Precisión simple</th>
+<th>Precisión doble</th>
+<th>Precisión cuádruple</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><em>Base</em> y nombre oficial del formato ( <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math> )</td>
+<td><em>binaria16</em></td>
+<td><em>binaria32</em></td>
+<td><em>binaria64</em></td>
+<td>binaria128</td>
+</tr>
+<tr class="even">
+<td>Número total de dígitos de almacenamiento ( <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> )</td>
+<td>16</td>
+<td>32</td>
+<td>64</td>
+<td>128</td>
+</tr>
+<tr class="odd">
+<td>Número de dígitos del signo ( <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>s</mi></msub><annotation encoding="application/x-tex">p_s</annotation></semantics></math> )</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr class="even">
+<td>Número de dígitos del exponente ( <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>e</mi></msub><annotation encoding="application/x-tex">p_e</annotation></semantics></math> )</td>
+<td>5</td>
+<td>8</td>
+<td>11</td>
+<td>15</td>
+</tr>
+<tr class="odd">
+<td>Número de dígitos del significante ( <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>m</mi></msub><annotation encoding="application/x-tex">p_m</annotation></semantics></math> )</td>
+<td>11</td>
+<td>24</td>
+<td>53</td>
+<td>113</td>
+</tr>
+<tr class="even">
+<td>Valor mínimo del exponente ( <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub><annotation encoding="application/x-tex">e_{min}</annotation></semantics></math> )</td>
+<td>-14</td>
+<td>-126</td>
+<td>-1022</td>
+<td>-16382</td>
+</tr>
+<tr class="odd">
+<td>Valor máximo del exponente ( <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>e</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub><annotation encoding="application/x-tex">e_{max}</annotation></semantics></math> )</td>
+<td>+15</td>
+<td>+127</td>
+<td>+1023</td>
+<td>+16383</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Los parámetros especificados en <a href="#tbl-params">Tabla&nbsp;2</a> definen los límites de almacenamiento de cada formato. En consecuencia, el número <em>normalizado</em> más grande estará especificado por la formula <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><msub><mi>e</mi><mrow><mi>m</mi><mi>a</mi><mi>x</mi></mrow></msub></msup><mo>×</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>2</mn><mo>−</mo><msup><mn>2</mn><mrow><mn>1</mn><mo>−</mo><mi>p</mi></mrow></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">2^{e_{max}}\times(2-2^{1-p})</annotation></semantics></math>, mientras que el número normalizado más pequeño será resultado de la expresión <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><msub><mi>e</mi><mrow><mi>m</mi><mi>i</mi><mi>n</mi></mrow></msub></msup><annotation encoding="application/x-tex">2^{e_{min}}</annotation></semantics></math>. En su forma <em>normalizada</em>, el significante <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math> siempre será menor a la magnitud de la base <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math> pero mayor o igual a uno (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>≤</mo><mi>m</mi><mo>&lt;</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">1 ≤ m &lt; \beta</annotation></semantics></math> ) o, sencillamente, el dígito inicial del significante será, en estos casos, igual a uno: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>.</mi><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub><msub><mi>m</mi><mn>3</mn></msub><mi>.</mi><mi>.</mi><mi>.</mi><msub><mi>m</mi><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">1.m_{1}m_{2}m_{3}...m_{p-1}</annotation></semantics></math>. Sin embargo, los números de punto flotante también podrán ser almacenados en forma <em>subnormalizada</em>, lo que implica que el significante podrá ser menor a uno y menor al valor de la base <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math> (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mo>≤</mo><mi>m</mi><mo>&lt;</mo><mi>β</mi></mrow><annotation encoding="application/x-tex">0 ≤ m &lt; \beta</annotation></semantics></math> ) o, sencillamente, que el dígito inicial del significante será, en estos casos, igual a cero: <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0</mn><mi>.</mi><msub><mi>m</mi><mn>1</mn></msub><msub><mi>m</mi><mn>2</mn></msub><msub><mi>m</mi><mn>3</mn></msub><mi>.</mi><mi>.</mi><mi>.</mi><msub><mi>m</mi><mrow><mi>p</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">0.m_{1}m_{2}m_{3}...m_{p-1}</annotation></semantics></math>.</p>
+<p>Un número de punto flotante tendrá un número de dígitos de almacenamiento totales <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> distribuídos entre el dígito para el signo <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>s</mi></msub><annotation encoding="application/x-tex">p_s</annotation></semantics></math> y el número de dígitos para el exponente <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>e</mi></msub><annotation encoding="application/x-tex">p_e</annotation></semantics></math> y el significante <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>m</mi></msub><annotation encoding="application/x-tex">p_m</annotation></semantics></math>. El primer dígito codifica al signo positivo o negativo, con el cero para los números positivos y el número uno para los valores negativos. Los siguientes dígitos codifican al exponente <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>. El número de dígitos del exponente está predefinido de acuerdo al formato de almacenamiento. Así, la precisión media cuenta con cinco dígitos para almacenar <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mn>5</mn></msup><annotation encoding="application/x-tex">2^5</annotation></semantics></math> (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>32</mn><annotation encoding="application/x-tex">{32}</annotation></semantics></math>) valores, la precisión simple cuenta con ocho dígitos para almacenar <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mn>8</mn></msup><annotation encoding="application/x-tex">2^8</annotation></semantics></math> (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>256</mn><annotation encoding="application/x-tex">256</annotation></semantics></math>) valores, la precisión doble cuenta con once dígitos para almacenar <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mn>11</mn></msup><annotation encoding="application/x-tex">2^{11}</annotation></semantics></math> (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>2048</mn><annotation encoding="application/x-tex">\num{2048}</annotation></semantics></math>) valores y la precisión cuádruple cuenta con quince dígitos para almacenar <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mn>15</mn></msup><annotation encoding="application/x-tex">2^{15}</annotation></semantics></math> (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>32768</mn><annotation encoding="application/x-tex">\num{32768}</annotation></semantics></math>) valores.</p>
+<p>El exponente es almacenado con el valor inicial o sesgo de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><msub><mi>p</mi><mi>e</mi></msub><mo>−</mo><mn>1</mn></mrow></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^{p_e - 1}-1</annotation></semantics></math>, el cual es interpretado como el exponente cero. De esta manera, los exponentes positivos y negativos son siempre almacenados como un número positivo, cuyo valor externo se obtiene al sumar el sesgo al valor interno de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>e</mi><annotation encoding="application/x-tex">e</annotation></semantics></math>. Así, los dígitos del exponente podrán almacenar valores enteros desde el número uno hasta <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><msub><mi>p</mi><mi>e</mi></msub></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^{p_e}-1</annotation></semantics></math>. Al restar el sesgo, esto se corresponde con los valores <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><msup><mn>2</mn><mrow><msub><mi>p</mi><mi>e</mi></msub><mo>−</mo><mn>1</mn></mrow></msup><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">-2^{p_e - 1} +1</annotation></semantics></math> a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mrow><msub><mi>p</mi><mi>e</mi></msub><mo>−</mo><mn>1</mn></mrow></msup><annotation encoding="application/x-tex">2^{p_e - 1}</annotation></semantics></math>. Sin embargo, las cotas del rango están reservadas para representar valores especiales, por lo que el rango de valores válidos para el exponente irá, efectivamente, de <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><msup><mn>2</mn><mrow><msub><mi>p</mi><mi>e</mi></msub><mo>−</mo><mn>1</mn></mrow></msup><mo>+</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">-2^{p_e - 1} +2</annotation></semantics></math> a <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mn>2</mn><mrow><msub><mi>p</mi><mi>e</mi></msub><mo>−</mo><mn>1</mn></mrow></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">2^{p_e - 1} - 1</annotation></semantics></math>.</p>
+<p>El esquema mencionado no explica cómo almacenar al cero. Es imposible espeficicar valores de f y e de forma que 1.f x 2e = 0. El formato de punto flotante hace una excepción a las reglas especificadas anteriormente. Cuando e = emin -1 y f = 0, los bits son interpretados como el número cero. Cuando e = emin – 1 y f es diferente de cero, el resultado es un número subnormal. Los bits son interpretados como 0.f x 2emin. En síntesis, el exponente especial reservado debajo de emin es utilizado para representar al cero y a los números de punto flotante denormalizados. El exponente especial reservado arriba de emax es utilizado para representar al infinito y a los valores no determinados. Si e = emax + 1 y f = 0, entonces los bits son interpretados como infinito. Pero si emax + 1 y f es diferente de cero, los bits son interpretados como NaN o como valores numéricos no definidos.</p>
+<p>El resto de los dígitos codifica la precisión del significante (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>p</mi><mi>m</mi></msub><annotation encoding="application/x-tex">p_m</annotation></semantics></math>). La precisión del significante depende de la definición del formato. La precisión media cuanta con 11 dígitos, la simple con 24, la doble con 53 y la cuátruple con 113.</p>
+<div id="tbl-params1" class="anchored">
+<table class="table">
+<caption>Tabla&nbsp;3: Tabla 3. Un texto futuro</caption>
+<colgroup>
+<col style="width: 24%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 19%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parámetro</th>
+<th>Precisión simple</th>
+<th>Precisión simple</th>
+<th>Precisión doble</th>
+<th>Precisión cuádruple</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Número de dígitos del exponente</td>
+<td>5</td>
+<td>8</td>
+<td>11</td>
+<td>15</td>
+</tr>
+<tr class="even">
+<td>Valor inicial del exponente</td>
+<td>15</td>
+<td>127</td>
+<td>1023</td>
+<td>16383</td>
+</tr>
+<tr class="odd">
+<td>Valor mínimo</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr class="even">
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="véase" class="level2 title" data-number="7">
+<h2 class="title anchored" data-number="7" data-anchor-id="véase"><span class="header-section-number">7</span> También véase</h2>
+<p><a href="integer"><code>integer()</code></a>, <a href="numeric"><code>numeric()</code></a> y <a href="storage.mode"><code>storage.mode()</code></a> y <a href="c"><code>c()</code></a></p>
+</section>
+<section id="ejemplo" class="level2 title" data-number="8">
+<h2 class="title anchored" data-number="8" data-anchor-id="ejemplo"><span class="header-section-number">8</span> Ejemplos</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>a <span class="ot">&lt;-</span> <span class="fl">0.3</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">22</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>b <span class="ot">&lt;-</span> <span class="fl">0.1</span> <span class="sc">+</span> <span class="fl">0.2</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(b)</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>a <span class="sc">==</span> b</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">all.equal</span>(a,b)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">7</span>)</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(a); <span class="fu">print</span>(b)</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="fu">is.double</span>(<span class="dv">1</span>) </span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="fu">all</span>(<span class="fu">double</span>(<span class="dv">3</span>) <span class="sc">==</span> <span class="dv">0</span>)</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="do">## La conversión recortará los espacios en blanco; </span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="do">## las cadenas de texto no numéricas devolverán NA </span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="do">## y una advertencia</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="fu">as.double</span>(<span class="fu">c</span>(<span class="st">"-.1"</span>,<span class="st">" 2.7 "</span>,<span class="st">"B"</span>))</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="fu">as.double</span>(<span class="fu">c</span>(<span class="st">"infinity"</span>, <span class="st">"NaN"</span>, <span class="st">"NA"</span>, <span class="st">"Inf"</span>,<span class="st">"3.14159"</span>,<span class="st">"+0"</span>,<span class="st">"-0"</span>))</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="do">## Los valores numéricos algunas veces serán convertidos</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="do">## accidentalmente a factores. Convertirlos de vuelta a </span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="do">## un vector numérico podría ser más complicado de lo que esperas.</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>f <span class="ot">&lt;-</span> <span class="fu">factor</span>(<span class="dv">5</span><span class="sc">:</span><span class="dv">10</span>)</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="fu">as.double</span>(f) <span class="co"># no es lo que esperas y probablemente </span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="do">## no es lo que desees hacer.</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="do">## Lo que realmente esperas y deseas hacer:</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="fu">as.double</span>(<span class="fu">as.character</span>(f))</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="do">## lo mismo, pero considerablemente más </span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="do">## eficiente para vectores largos:</span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="fu">as.double</span>(<span class="fu">levels</span>(f))[f]</span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="do">## Para verificar las funciones de la clase "numeric"</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a> <span class="fu">methods</span>(<span class="at">class =</span> <span class="st">"numeric"</span>) <span class="co"># all.equal   as.data.frame  as.Date  </span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># as.POSIXct  as.POSIXlt  as.raster</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>                            <span class="co"># coerce   Ops  </span></span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="codigo" class="level2 title" data-number="9">
+<h2 class="title anchored" data-number="9" data-anchor-id="codigo"><span class="header-section-number">9</span> Código fuente</h2>
+<section id="double" class="level3" data-number="9.1">
+<h3 data-number="9.1" class="anchored" data-anchor-id="double"><span class="header-section-number">9.1</span> double()</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> <span class="cf">function</span> (<span class="at">length =</span> 0L)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">.Internal</span>(<span class="fu">vector</span>(<span class="st">"double"</span>, length))</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="as.double" class="level3" data-number="9.2">
+<h3 data-number="9.2" class="anchored" data-anchor-id="as.double"><span class="header-section-number">9.2</span> as.double()</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span> (x, ...)  </span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">.Primitive</span>(<span class="st">"as.double"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="is.double" class="level3" data-number="9.3">
+<h3 data-number="9.3" class="anchored" data-anchor-id="is.double"><span class="header-section-number">9.3</span> is.double()</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span> (x)  </span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">.Primitive</span>(<span class="st">"is.double"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="single" class="level3" data-number="9.4">
+<h3 data-number="9.4" class="anchored" data-anchor-id="single"><span class="header-section-number">9.4</span> single()</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span> (<span class="at">length =</span> 0L)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">structure</span>(<span class="fu">vector</span>(<span class="st">"double"</span>, length), <span class="at">Csingle =</span> <span class="cn">TRUE</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="as.single" class="level3" data-number="9.5">
+<h3 data-number="9.5" class="anchored" data-anchor-id="as.single"><span class="header-section-number">9.5</span> as.single()</h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="cf">function</span> (x, ...)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>      <span class="fu">UseMethod</span>(<span class="st">"as.single"</span>)</span></code><button title="Copiar al portapapeles" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="traduccion" class="level2 title" data-number="10">
+<h2 class="title anchored" data-number="10" data-anchor-id="traduccion"><span class="header-section-number">10</span> Sobre esta traducción</h2>
+<p>La traducción al español de esta página de ayuda fue actualizada el 20 de mayo de 2023 y está basada en la documentación original de <strong>R</strong> en inglés para la versión 4.3.0. Es una versión extendida de la página de ayuda original y tiene como objetivo ampliar la información ofrecida en la versión inglesa. La revisión técnica de esta página de ayuda todavía no ha sido realizada. Si deseas participar revisando los aspectos estadísticos y de programación, o sugerir mejoras gramaticales, ortográficas o de estilo al texto, puedes dirigirte a la página del proyecto en: https://github.com/sicabi/documentacionR. Toda contribución será atribuida a la persona que la realice.</p>
+</section>
+<section id="referencias" class="level2" data-number="11">
+<h2 data-number="11" class="anchored" data-anchor-id="referencias"><span class="header-section-number">11</span> Referencias</h2>
+<p></p>
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography"><h2 class="anchored quarto-appendix-heading">Referencias</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-becker1998" class="csl-entry" role="listitem">
+Becker, Richard A., John M. Chambers, y Allan R Wilks. 1998. <em>The New S Language: A Programming Environment for Data Analysis and Graphics</em>. Wadsworth &amp; Brookscole. Boca Raton, FL: CRC Press.
+</div>
+<div id="ref-borgwardt2010" class="csl-entry" role="listitem">
+Borgwardt, Michael. 2010. <span>«The Floating-Point Guide - Floating Point Numbers»</span>. <a href="https://floating-point-gui.de/formats/fp/">https://floating-point-gui.de/formats/fp/</a>.
+</div>
+<div id="ref-evans2023" class="csl-entry" role="listitem">
+Evans, Julia. 2023. <em>How Integers and Floats Work. The weird truth about how your computer does math</em>. Wizard Zines. Montreal: wizardzines.com. <a href="https://wizardzines.com/zines/integers-floats/">https://wizardzines.com/zines/integers-floats/</a>.
+</div>
+<div id="ref-geisler2019" class="csl-entry" role="listitem">
+Geisler, Dietrich, y Edwin Peguero. 2019. <span>«The Cult of Posits»</span>. <a href="https://www.cs.cornell.edu/courses/cs6120/2019fa/blog/posits/">https://www.cs.cornell.edu/courses/cs6120/2019fa/blog/posits/</a>.
+</div>
+<div id="ref-goldberg1991" class="csl-entry" role="listitem">
+Goldberg, David. 1991. <span>«What Every Computer Scientist Should Know about Floating-Point Arithmetic»</span>. <em>ACM Computing Surveys</em> 23 (1): 5-48. <a href="https://doi.org/10.1145/103162.103163">https://doi.org/10.1145/103162.103163</a>.
+</div>
+<div id="ref-muller2018" class="csl-entry" role="listitem">
+Muller, Jean-Michel, Nicolas Brunie, Florent De Dinechin, Claude-Pierre Jeannerod, Mioara Joldes, Vincent Lefèvre, Guillaume Melquiond, Nathalie Revol, y Serge Torres. 2018. <em>Handbook of Floating-Point Arithmetic</em>. Boston: Birkhäuser. <a href="https://doi.org/10.1007/978-3-319-76526-6">https://doi.org/10.1007/978-3-319-76526-6</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Notas</h2>
+
+<ol>
+<li id="fn1"><p>Otra definición consiste en especificar al conjunto de los números de punto flotante <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>𝔽</mi><annotation encoding="application/x-tex">\mathbb{F}</annotation></semantics></math> como el cero y todos los números de la forma <math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>±</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>f</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>×</mo><msup><mn>2</mn><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">\pm(1+f)\times2^n</annotation></semantics></math></p>
+<p>donde <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math> es un entero llamado el exponente, y el número <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mo>+</mo><mi>f</mi></mrow><annotation encoding="application/x-tex">1+f</annotation></semantics></math> es el significante, definido a su vez como</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>=</mo><mo>∑</mo><msubsup><mrow></mrow><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>d</mi></msubsup><msub><mi>b</mi><mi>i</mi></msub><msup><mn>2</mn><mrow><mi>d</mi><mo>−</mo><mi>i</mi></mrow></msup><mo>,</mo><msub><mi>b</mi><mi>i</mi></msub><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">
+f = \sum{}_{i=1}^{d}{b_i}2^{d-i},  b_i \in \{0,1\}
+</annotation></semantics></math></p>
+<p>para un entero <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>d</mi><annotation encoding="application/x-tex">d</annotation></semantics></math> llamado precisión binaria.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  let localAlternateSentinel = 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copiado");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copiado");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

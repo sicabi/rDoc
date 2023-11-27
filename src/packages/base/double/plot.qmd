@@ -1,0 +1,46 @@
+---
+title: "Untitled"
+format: pdf
+editor: visual
+---
+
+```{r, fig.width=6.5, fig.height=2, fig.align='center', fig.cap="Rango de representación de números de punto flotante de 64 bits"}
+#| echo: false
+par(omi = c(0, 0, 0, 0), mai = c(0, 0, 0, 0))
+x_lim_neg <- -225
+x_lim_pos <- 225
+plot(x = 0, y = 0, xlim = c(x_lim_neg,x_lim_pos), ylim = c(0, 150), type = "n",
+     xlab = "", ylab = "", axes = F)
+rect(xleft = -20, ybottom = 0, xright = +20, ytop = 100,
+     col = "#fffee2", border = NA)
+rect(xleft = -20, ybottom = 0, xright = -30, ytop = 100, col = "#cdf3cb",
+     border = NA)
+rect(xleft = 20, ybottom = 0, xright = 30, ytop = 100, col = "#cdf3cb",
+     border = NA)
+rect(xleft = -30, ybottom = 0, xright = -140, ytop = 100, col = "#d8fcd6",
+     border = NA)
+rect(xleft = +30, ybottom = 0, xright = +140, ytop = 100, col = "#d8fcd6",
+     border = NA)
+rect(xleft = -140, ybottom = 0, xright = x_lim_neg, ytop = 100,
+     col = "#fcdcd6", border = NA)
+rect(xleft = +140, ybottom = 0, xright = x_lim_pos, ytop = 100,
+     col = "#fcdcd6", border = NA)
+text(x = 0, y = 50, labels = "Absorción\n al 0", cex = 0.70, font = 1)
+text(x = 0, y = 140, labels = "Números \n anormales", cex = 0.70, font = 1)
+text(x = -80, y = 50, labels = "Numeros\n normales", cex = 0.70, font = 1)
+text(x = +80, y = 50, labels = "Números\n normales", cex = 0.70, font = 1)
+text(x = -182, y = 50, labels = "Desbordamiento a\n",
+     cex = 0.70, font = 1)
+text(x = -182, y = 43, labels = expression(-infinity),
+     cex = 0.85, font = 1)
+text(x = +182, y = 50, labels = "Desbordamiento a\n",
+     cex = 0.70, font = 1)
+text(x = +182, y = 43, labels = expression(+infinity),
+     cex = 0.85, font = 1)
+lines(x = c(x_lim_neg,x_lim_pos), y = c(0,0), lwd = 0.75)
+x_segments <- c(x_lim_neg,-140,-30,-20,0,20,30,140,x_lim_pos)
+y0_segments <- c(0,0,0,0,0,0,0,0)
+y1_segments <- c(-7,-7,-7,-7,-7,-7,-7,-7)
+segments(x0 = x_segments, y0 = y0_segments, x1 = x_segments,
+         y1 = y1_segments, lwd = 0.75)
+```
