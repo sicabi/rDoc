@@ -22,9 +22,7 @@ format:
     include-before-body: alignment.tex
     include-after-body: alignment_end.tex
   html:
-    theme:
-      light: pandoc
-      dark: darkly
+    title: "Funciones para crear o verificar vectores de tipo *doble*"
     toc: true
     toc-location: left
     number-sections: true

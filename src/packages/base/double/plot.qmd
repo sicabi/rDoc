@@ -43,4 +43,10 @@ y0_segments <- c(0,0,0,0,0,0,0,0)
 y1_segments <- c(-7,-7,-7,-7,-7,-7,-7,-7)
 segments(x0 = x_segments, y0 = y0_segments, x1 = x_segments,
          y1 = y1_segments, lwd = 0.75)
+x_anormales_neg <- seq(-30,-20, by = 1)
+x_anormales_pos <- sort(x_anormales_neg *-1)
+x_anormales <- c(x_anormales_neg,x_anormales_pos)
+segments(x0 = x_anormales, y0 = rep(1, length(x_anormales)), 
+         x1 = x_anormales, y1 = rep(5,length(x_anormales)), 
+         lwd = 0.5, col = "#a0a0a0")
 ```
